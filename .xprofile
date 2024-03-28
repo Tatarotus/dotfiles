@@ -1,0 +1,8 @@
+xrandr --newmode "1280x1024_70.00"  129.00  1280 1368 1504 1728  1024 1027 1034 1069 -hsync +vsync
+xrandr --addmode VGA-1 1280x1024_70.00
+xrandr --output LVDS-1 --off
+xrandr --output VGA-1 --mode 1280x1024_70.00 &
+
+systemctl restart cpupower.service
+
+
