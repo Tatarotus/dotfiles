@@ -5,6 +5,7 @@ if status is-interactive
     alias ll="exa -alh --group-directories-first"
     alias tree="exa -T --git-ignore"
     alias lsaa="exa --long --header --git -a --group-directories-first"
+    alias cat="bat -p"
     alias vim="nvim"
     zoxide init fish | source
     alias cd="z $argv"
@@ -12,6 +13,7 @@ if status is-interactive
     #git alias
     alias gita="git add -A"
     alias gits="git status"
+    alias gitl="git log"
     alias gitc="git commit -m $argv"
     alias gitr="git reset --hard $argv"
     # add custom paths
