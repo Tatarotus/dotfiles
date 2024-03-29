@@ -9,6 +9,7 @@ if status is-interactive
     alias vim="nvim"
     zoxide init fish | source
     alias cd="z $argv"
+    alias zz="z -"
 
     #git alias
     alias gita="git add -A"
