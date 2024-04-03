@@ -73,10 +73,20 @@ nnoremap <F11> :bufdo tab split<CR>:tablast<CR>:tabclose<CR>:syntax on<CR>
 nnoremap <PageUp> :tabNext <cr>
 nnoremap <PageDown> :tabprevious <cr>
 nnoremap <F5> :w <cr> :source % <CR>
+nnoremap <space> :NERDTreeToggle <cr>
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+nnoremap <Del> :tabclose <CR>
 
 "----------------------------Plugin Settings---------------------------------------------------
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let g:NERDTreeStatusline = ''
+" Automaticaly close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-nnoremap <F4> :NERDTreeToggle <cr>
+" Open in tab
+let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
 
 "---------------------------Custom Functions--------------------------------------------------
 " Terminal Function @Thanks anonyous reddit user
