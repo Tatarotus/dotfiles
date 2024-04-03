@@ -5,6 +5,7 @@ Plug 'sainnhe/sonokai'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary' 
 Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
@@ -18,7 +19,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
-
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 call plug#end()
 
 "------------------------------Theme-----------------------------------------------------------
@@ -60,7 +61,8 @@ set clipboard^=unnamed,unnamedplus
 
 "set keymaps
 
-nnoremap <cr> :w <cr>
+" nnoremap <cr> :w <cr>
+nnoremap <cr> :Prettier <cr> :w <cr>
 
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
