@@ -61,8 +61,7 @@ set clipboard^=unnamed,unnamedplus
 
 "set keymaps
 
-" nnoremap <cr> :w <cr>
-nnoremap <cr> :Prettier <cr> :w <cr>
+nnoremap <cr> :w <cr>
 
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
@@ -72,7 +71,7 @@ inoremap jk <Esc>
 nnoremap <F11> :bufdo tab split<CR>:tablast<CR>:tabclose<CR>:syntax on<CR>
 nnoremap <PageUp> :tabNext <cr>
 nnoremap <PageDown> :tabprevious <cr>
-nnoremap <F5> :w <cr> :source % <CR>
+nnoremap <F5> :Prettier <cr> :w <cr>
 nnoremap <space> :NERDTreeToggle <cr>
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 nnoremap <Del> :tabclose <CR>
