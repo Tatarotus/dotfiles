@@ -20,6 +20,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'mg979/vim-visual-multi'
 call plug#end()
 
 "------------------------------Theme-----------------------------------------------------------
