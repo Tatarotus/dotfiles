@@ -42,7 +42,7 @@ size = 13.5
 # use_thin_strokes = false
 
 [font.bold]
-family = "FiraCode Nerd Font"
+family = "MonoLisa Nerd Font Mono"
 style = "Bold"
 
 # [font.debug]
@@ -53,11 +53,12 @@ x = 0
 y = 0
 
 [font.italic]
-family = "FiraCode Nerd Font"
+family = "MonoLisa Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
 family = "FiraCode Nerd Font Mono"
+#family = "MonoLisa Nerd Font Mono"
 style = "Regular"
 
 [font.offset]
