@@ -10,6 +10,8 @@ if status is-interactive
     zoxide init fish | source
     alias cd="z $argv"
     alias zz="z -"
+    alias spotify="ncspot"
+    alias stf="ncspot"
 
     #git alias
     alias gita="git add -A"
