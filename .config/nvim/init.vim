@@ -21,6 +21,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'mg979/vim-visual-multi'
+Plug 'w0rp/ale'
 call plug#end()
 
 "------------------------------Theme-----------------------------------------------------------
@@ -87,6 +88,16 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Open in tab
 let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
+
+
+"ESLINT
+let b:ale_linters = ['eslint']
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }
+ 
+" let g:ale_sign_error = '❌'
+" let g:ale_sign_warning = '⚠'
 
 "---------------------------Custom Functions--------------------------------------------------
 " Terminal Function @Thanks anonyous reddit user
