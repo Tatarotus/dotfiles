@@ -13,12 +13,14 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
+" Plug 'hrsh7th/cmp-buffer'
+" Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
+" Plug 'hrsh7th/cmp-vsnip'
+" Plug 'hrsh7th/vim-vsnip'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'mg979/vim-visual-multi'
 Plug 'w0rp/ale'
@@ -146,8 +148,6 @@ lua <<EOF
       lualine_x = {'encoding', 'filename'}
     }
   }
-  require('mason').setup()
-  require('mason-lspconfig').setup()
 
   local cmp = require'cmp'
 
@@ -231,13 +231,44 @@ lua <<EOF
  -- require('lspconfig')['emmet_ls'].setup {
   --  capabilities = capabilities
  -- }
+
+  local lsp_zero = require('lsp-zero')
+
+  lsp_zero.on_attach(function(client, bufnr)
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp_zero.default_keymaps({buffer = bufnr})
+  end) 
+
  local lspconfig = require'lspconfig'
- local servers = {"cssls", "lua_ls", "emmet_ls"}
+ local servers = {}
 
   for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
       capabilities = capabilities,
     }
   end
+
+  -- automatic set up
+
+  local lsp_zero = require('lsp-zero')
+
+  lsp_zero.on_attach(function(client, bufnr)
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp_zero.default_keymaps({buffer = bufnr})
+  end)
+
+  -- to learn how to use mason.nvim
+  -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md
+  require('mason').setup({})
+  require('mason-lspconfig').setup({
+    ensure_installed = {},
+    handlers = {
+      function(server_name)
+        require('lspconfig')[server_name].setup({})
+      end,
+    },
+  })
 --EOF
 
