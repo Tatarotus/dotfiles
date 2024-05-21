@@ -2,6 +2,7 @@ call plug#begin()
 Plug 'sainnhe/sonokai'
 "Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 "Plug 'feline-nvim/feline.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'preservim/nerdtree'
@@ -141,6 +142,29 @@ tnoremap :q! <C-\><C-n>:q!<CR>
 
 "-----------------------Lua Scripts------------------------------------------------------------
 lua <<EOF
+
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = { "javascript", "tsx" }, -- Languages to install
+    highlight = {
+      enable = true,                            -- Enable highlighting
+      disable = {},                             -- Disable for specified languages
+      additional_vim_regex_highlighting = false,
+    },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
+      },
+    },
+    indent = {
+      enable = true
+    }
+  }
+
+
 
   require('lualine').setup{
     sections = {
