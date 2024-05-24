@@ -75,7 +75,6 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 inoremap jk <Esc>
-nnoremap <F11> :bufdo tab split<CR>:tablast<CR>:tabclose<CR>:syntax on<CR>
 nnoremap <PageUp> :tabNext <cr>
 nnoremap <PageDown> :tabprevious <cr>
 nnoremap <F5> :Prettier <cr> :w <cr>
