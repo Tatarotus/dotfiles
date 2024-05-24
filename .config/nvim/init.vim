@@ -25,6 +25,8 @@ Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'mg979/vim-visual-multi'
 Plug 'w0rp/ale'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 call plug#end()
 
 "------------------------------Theme-----------------------------------------------------------
@@ -77,9 +79,15 @@ nnoremap <F11> :bufdo tab split<CR>:tablast<CR>:tabclose<CR>:syntax on<CR>
 nnoremap <PageUp> :tabNext <cr>
 nnoremap <PageDown> :tabprevious <cr>
 nnoremap <F5> :Prettier <cr> :w <cr>
-nnoremap <space> :NERDTreeToggle <cr>
+nnoremap <space><space> :NERDTreeToggle <cr>
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 nnoremap <Del> :tabclose <CR>
+
+" Find files using Telescope command-line sugar.
+nnoremap <space>f <cmd>Telescope find_files<cr>
+nnoremap <space>g <cmd>Telescope live_grep<cr>
+nnoremap <space>b <cmd>Telescope buffers<cr>
+nnoremap <space>h <cmd>Telescope help_tags<cr>
 
 "----------------------------Plugin Settings---------------------------------------------------
 let g:NERDTreeShowHidden = 1
