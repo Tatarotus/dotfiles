@@ -12,7 +12,7 @@ if status is-interactive
     alias zz="z -"
     alias spotify="ncspot"
     alias stf="ncspot"
-    alias pm="pnpm"
+    alias npm="pnpm"
 
     #git alias
     alias gita="git add -A"
