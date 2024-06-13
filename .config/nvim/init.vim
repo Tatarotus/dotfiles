@@ -78,7 +78,7 @@ inoremap <C-l> <Right>
 inoremap jk <Esc>
 nnoremap <PageUp> :tabNext <cr>
 nnoremap <PageDown> :tabprevious <cr>
-nnoremap <F5> :Prettier <cr> :w <cr>
+nnoremap <F5> :Prettier Async<cr> :w <cr>
 nnoremap <space><space> :NERDTreeToggle <cr>
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 nnoremap <Del> :tabclose <CR>
