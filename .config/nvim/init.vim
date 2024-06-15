@@ -1,7 +1,7 @@
 call plug#begin()
 Plug 'sainnhe/sonokai'
-"Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-"Plug 'feline-nvim/feline.nvim'
+Plug 'EdenEast/nightfox.nvim' " Vim-Plug
+" Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
@@ -33,16 +33,18 @@ call plug#end()
 "------------------------------Theme-----------------------------------------------------------
 set termguicolors
 
-let g:lightline = {'colorscheme' : 'sonokai'}
-let g:airline_theme = 'sonokai'
+" let g:lightline = {'colorscheme' : 'sonokai'}
+" let g:airline_theme = 'sonokai'
 
-let g:sonokai_style = 'andromeda'
-let g:sonokai_enable_italic = 0
-let g:sonokai_disable_italic_comment = 0
+" let g:sonokai_style = 'andromeda'
+" let g:sonokai_enable_italic = 0
+" let g:sonokai_disable_italic_comment = 0
 
-colorscheme sonokai  
- " colorscheme catppuccin-macchiato " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
-hi Normal guibg=NONE ctermbg=NONE
+" colorscheme sonokai  
+
+colorscheme dayfox
+" colorscheme catppuccin-latte " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+" hi Normal guibg=NONE ctermbg=NONE
 
 "-----------------------------Basic Settings---------------------------------------------------
 syntax on

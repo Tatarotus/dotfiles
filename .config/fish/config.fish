@@ -12,7 +12,9 @@ if status is-interactive
     alias zz="z -"
     alias spotify="ncspot"
     alias stf="ncspot"
-    alias npm="pnpm"
+    alias nm="pnpm"
+    # alias rsync = "rsync -avzh --progress --stats \"$src\" \"$dst\""
+    # alias rsync = "rsync -r --info=progress2 --info=name0"
 
     #git alias
     alias gita="git add -A"

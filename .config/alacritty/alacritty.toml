@@ -1,7 +1,6 @@
 # dynamic_title = true
 
-[colors]
-draw_bold_text_with_bright_colors = true
+# draw_bold_text_with_bright_colors = true
 
 [colors.bright]
 black = "#928374"
@@ -93,4 +92,4 @@ lines = 28
 
 [window.padding]
 x = 15
-  y = 15
+y = 15
