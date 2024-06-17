@@ -26,6 +26,15 @@ vim.g.ale_fixers = { javascript = { 'eslint' } }
 
 vim.g.UltiSnipsSnippetDirectories = { "~/.config/nvim/UltiSnips" }
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "javascriptreact",
+    callback = function()
+        vim.cmd("UltiSnipsAddFiletypes javascriptreact")
+    end,
+})
+
+vim.g.UltiSnipsExpandTrigger = "<tab>"
+
 
 local treesitter = require'nvim-treesitter.configs'
 local lualine = require'lualine'

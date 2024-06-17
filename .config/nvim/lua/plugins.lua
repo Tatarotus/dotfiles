@@ -20,10 +20,8 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'L3MON4D3/LuaSnip'
-Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'mg979/vim-visual-multi'
 Plug 'w0rp/ale'

@@ -1,9 +1,12 @@
 local cmp = require'cmp'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require'lspconfig'
-local lsp_zero = require('lsp-zero')
 local mason = require'mason'
 local mason_lspconfig = require'mason-lspconfig'
+
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
 
 cmp.setup({
   snippet = {
@@ -26,6 +29,24 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+        feedkey("<C-R>=UltiSnips#JumpForwards()<CR>", "")
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+        feedkey("<C-R>=UltiSnips#JumpBackwards()<CR>", "")
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -75,17 +96,8 @@ cmp.setup.cmdline(':', {
   matching = { disallow_symbol_nonprefix_matching = true }
 })
 
-lsp_zero.on_attach(function(_, bufnr)
-  lsp_zero.default_keymaps({ buffer = bufnr })
-end)
-
 local servers = {}
 
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    capabilities = capabilities,
-  }
-end
 
 mason.setup()
 mason_lspconfig.setup({

@@ -1,0 +1,42 @@
+snippet rfc "React Functional Component" b
+const ${1:ComponentName} = () => {
+  return (
+    <div>
+      ${2:/* content */}
+    </div>
+  );
+};
+endsnippet
+
+snippet rafce "React Functional Component export"
+const $1 = () => {
+	return (
+		<div>
+			$1
+		</div>
+	)
+}
+
+export default $1
+$2
+endsnippet
+
+snippet usf "useState Hook" b
+const [${1:state}, set${1/^./\u$0/}] = useState(${2:initialValue});
+endsnippet
+
+snippet uef "useEffect Hook" b
+useEffect(() => {
+  ${1:// effect}
+  return () => {
+    ${2:// cleanup}
+  };
+}, [${3:dependencies}]);
+endsnippet
+
+snippet frag "React Fragment" b
+<React.Fragment>
+  ${1:/* content */}
+</React.Fragment>
+endsnippet
+
