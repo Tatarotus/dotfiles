@@ -12,7 +12,7 @@ if status is-interactive
     alias zz="z -"
     alias spotify="ncspot"
     alias stf="ncspot"
-    alias nm="pnpm"
+    alias np="pnpm"
     # alias rsync = "rsync -avzh --progress --stats \"$src\" \"$dst\""
     # alias rsync = "rsync -r --info=progress2 --info=name0"
 
@@ -24,4 +24,6 @@ if status is-interactive
     alias gitr="git reset --hard $argv"
     # add custom paths
     fish_add_path $HOME/.local/bin/
+
+    # bind \t accept-autosuggestion
 end

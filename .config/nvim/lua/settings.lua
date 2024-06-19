@@ -39,6 +39,7 @@ vim.g.UltiSnipsExpandTrigger = "<tab>"
 local treesitter = require'nvim-treesitter.configs'
 local lualine = require'lualine'
 local toggleterm = require'toggleterm'
+local telescope = require'telescope'
 
 treesitter.setup {
   ensure_installed = { "javascript", "tsx" },
@@ -68,3 +69,30 @@ lualine.setup {
 }
 
 toggleterm.setup()
+
+telescope.setup{
+  defaults = {
+    file_ignore_patterns = {"node_modules"},
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--hidden',
+      '--no-ignore',
+      '--glob',
+      '!.git/',
+    },
+  },
+  pickers = {
+    find_files = {
+     find_command = {'rg', '--files',  '--no-ignore', '--hidden', '--glob', '!.git/', '--glob', '!node_modules/*'},
+    }
+  },
+}
+
+vim.api.nvim_set_keymap('n', '<space>fh', ':lua require("telescope.builtin").find_files({ hidden = true })<CR>', { noremap = true, silent = true })
+

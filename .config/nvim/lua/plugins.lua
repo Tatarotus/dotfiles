@@ -28,5 +28,6 @@ Plug 'w0rp/ale'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'tpope/vim-surround'
 call plug#end()
 ]])
