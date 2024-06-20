@@ -15,11 +15,12 @@ vim.opt.clipboard:append{'unnamed', 'unnamedplus'}
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Plugin Settings
-vim.g.NERDTreeShowHidden = 1
-vim.g.NERDTreeMinimalUI = 1
-vim.g.NERDTreeIgnore = {}
-vim.g.NERDTreeStatusline = ''
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
 
 vim.g.ale_linters = { javascript = { 'eslint' } }
 vim.g.ale_fixers = { javascript = { 'eslint' } }
@@ -40,6 +41,7 @@ local treesitter = require'nvim-treesitter.configs'
 local lualine = require'lualine'
 local toggleterm = require'toggleterm'
 local telescope = require'telescope'
+local nvim_tree = require'nvim-tree'
 
 treesitter.setup {
   ensure_installed = { "javascript", "tsx" },
@@ -96,3 +98,18 @@ telescope.setup{
 
 vim.api.nvim_set_keymap('n', '<space>fh', ':lua require("telescope.builtin").find_files({ hidden = true })<CR>', { noremap = true, silent = true })
 
+
+nvim_tree.setup {
+  update_cwd = true,  -- update the current working directory
+  view = {
+    width = 30,
+    side = 'left',
+  },
+  filters = {
+    dotfiles = false, -- don't hide dotfiles
+  },
+  git = {
+    enable = true,
+    ignore = false,  -- don't ignore files based on .gitignore
+  },
+}

@@ -5,7 +5,7 @@ Plug 'sainnhe/sonokai'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'preservim/nerdtree'
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
