@@ -9,7 +9,7 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
-Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+Plug 'Exafunction/codeium.nvim', { 'branch': 'main' }
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'

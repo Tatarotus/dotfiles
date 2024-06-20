@@ -42,6 +42,7 @@ local lualine = require'lualine'
 local toggleterm = require'toggleterm'
 local telescope = require'telescope'
 local nvim_tree = require'nvim-tree'
+local codeium = require'codeium'
 
 treesitter.setup {
   ensure_installed = { "javascript", "tsx" },
@@ -112,4 +113,24 @@ nvim_tree.setup {
     enable = true,
     ignore = false,  -- don't ignore files based on .gitignore
   },
+}
+
+codeium.setup {
+  enable = true,               -- Enable the plugin
+  filetypes = {                -- Filetypes to enable codeium on
+    'javascript', 'typescript', 'python', 'lua', 'go', 'rust', 'java'
+  },
+  completion = {
+    enabled = true,            -- Enable code completion
+    auto_trigger = true,       -- Auto-trigger completion
+  },
+  inline_suggestions = {
+    enabled = true,            -- Enable inline suggestions
+  },
+  hover = {
+    enabled = true,            -- Enable hover documentation
+  },
+  enable_chat = {
+    enable = true
+  }
 }

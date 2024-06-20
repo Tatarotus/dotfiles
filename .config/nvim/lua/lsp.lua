@@ -49,6 +49,7 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
+    { name = "codeium" },
     { name = 'nvim_lsp' },
     { name = 'ultisnips' },
   }, {
@@ -62,6 +63,7 @@ cmp.setup({
       -- set a name for each source
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
+        codeium = "[C]",
         ultisnips = "[US]",
         buffer = "[BUF]",
         path = "[PATH]",
