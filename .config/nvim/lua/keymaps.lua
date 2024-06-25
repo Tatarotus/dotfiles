@@ -30,5 +30,6 @@ map(  't','<A-v>',  '<C-\\><C-n>'  ,  {noremap = true}  )
 map(  't','<A-V>',  '<C-\\><C-n>'  ,  {noremap = true}  )
 map('n', '<C-\\>', ':tab split<CR>:exec("tag ".expand("<cword>"))<CR>', { noremap = true, silent = true })
 map('n', '<A-]>', ':vsp<CR>:exec("tag ".expand("<cword>"))<CR>', { noremap = true, silent = true })
+map('n', '<leader>cc', ':NvimTreeCollapse<CR>', { noremap = true, silent = true })
 
 

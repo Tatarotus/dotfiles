@@ -96,3 +96,8 @@ lines = 28
 [window.padding]
 x = 15
 y = 15
+
+[mouse]
+# url_launcher = true
+# hide_when_typing = false
+# scroll = false  # This prevents scrolling to the bottom on copy

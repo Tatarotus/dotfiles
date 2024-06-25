@@ -1,5 +1,6 @@
 vim.cmd([[
 call plug#begin()
+Plug 'junegunn/vim-plug'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'sainnhe/sonokai'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

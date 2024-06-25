@@ -134,3 +134,4 @@ codeium.setup {
     enable = true
   }
 }
+
