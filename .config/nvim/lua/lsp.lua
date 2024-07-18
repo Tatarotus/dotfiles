@@ -86,9 +86,9 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
+    { name = 'ultisnips' },
     { name = "codeium" },
     { name = 'nvim_lsp' },
-    { name = 'ultisnips' },
   }, {
     { name = 'buffer' },
     { name = 'path' },
@@ -99,9 +99,9 @@ cmp.setup({
       vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
       -- set a name for each source
       vim_item.menu = ({
+        ultisnips = "[US]",
         codeium = "[C]",
         nvim_lsp = "[LSP]",
-        ultisnips = "[US]",
         buffer = "[BUF]",
         path = "[PATH]",
       })[entry.source.name]

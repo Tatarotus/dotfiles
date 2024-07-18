@@ -1,12 +1,5 @@
-snippet rfc "React Functional Component" b
-const ${1:ComponentName} = () => {
-  return (
-    <div>
-      ${2:/* content */}
-    </div>
-  );
-};
-endsnippet
+# Extends JavaScript snippets
+extends javascript
 
 snippet rafce "React Functional Component export"
 const $1 = () => {
@@ -28,20 +21,26 @@ endsnippet
 snippet uef "useEffect Hook" b
 useEffect(() => {
   ${1:// effect}
-  return () => {
-    ${2:// cleanup}
-  };
-}, [${3:dependencies}]);
+  //return () => {
+  //};
+}, [${2:dependencies}]);
 endsnippet
 
 snippet frag "React Fragment" b
-<React.Fragment>
+<>
   ${1:/* content */}
-</React.Fragment>
+</>
 endsnippet
-snippet cl "console.log"
-console.log(${0})
-endsnippet
-snippet clstr "console.log stringified"
+
+snippet json "JSON stringified debugger"
 <pre>(JSON.stringify(${0}, null, 2)</pre>
 endsnippet
+
+snippet terny "Terniary"
+$1 ? ($2) : ($3)
+endsnippet
+
+snippet imp "Basic Import"
+const { $1 } from "$2"
+endsnippet
+

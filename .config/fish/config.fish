@@ -1,5 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    if status is-interactive
+    # Commands to run in interactive sessions can go here
     alias lsa="du -sh * | sort -hr"
     alias ls="exa"
     alias ll="exa -alh --group-directories-first"
@@ -10,11 +12,11 @@ if status is-interactive
     zoxide init fish | source
     alias cd="z $argv"
     alias zz="z -"
-    alias spotify="ncspot"
-    alias stf="ncspot"
-    alias np="pnpm"
-    # alias rsync = "rsync -avzh --progress --stats \"$src\" \"$dst\""
-    # alias rsync = "rsync -r --info=progress2 --info=name0"
+    alias y="pnpm"
+    alias yt="youtube-dl -f 'bestvideo[ext=mp4][height<=1080]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
+    alias update="paru -Syyu"
+    alias install="paru -S"
+    alias search="paru -Ss"
 
     #git alias
     alias gita="git add -A"
@@ -24,6 +26,5 @@ if status is-interactive
     alias gitr="git reset --hard $argv"
     # add custom paths
     fish_add_path $HOME/.local/bin/
-
-    # bind \t accept-autosuggestion
+end
 end
