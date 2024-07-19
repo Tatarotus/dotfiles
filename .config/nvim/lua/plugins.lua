@@ -31,5 +31,6 @@ Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'tpope/vim-surround'
 Plug 'windwp/nvim-ts-autotag'
+Plug 'jwalton512/vim-blade'
 call plug#end()
 ]])

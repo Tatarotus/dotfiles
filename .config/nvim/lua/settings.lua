@@ -26,6 +26,7 @@ vim.g.ale_linters = { javascript = { 'eslint' } }
 vim.g.ale_fixers = { javascript = { 'eslint' } }
 
 vim.g.UltiSnipsSnippetDirectories = { "~/.config/nvim/UltiSnips" }
+vim.cmd [[autocmd BufNewFile,BufRead *.blade.php set filetype=blade]]
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "javascriptreact",
@@ -45,7 +46,7 @@ local nvim_tree = require'nvim-tree'
 local codeium = require'codeium'
 
 treesitter.setup {
-  ensure_installed = { "javascript", "tsx", "html", "css", "lua" },
+  ensure_installed = { "javascript", "tsx", "html", "css", "lua", "php"},
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
