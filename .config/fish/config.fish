@@ -13,7 +13,9 @@ if status is-interactive
     alias cd="z $argv"
     alias zz="z -"
     alias y="pnpm"
-    alias yt="youtube-dl -f 'bestvideo[ext=mp4][height<=1080]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
+    # alias yt="youtube-dl -f 'bestvideo[ext=mp4][height<=1080]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
+    alias yt= "yt-dlp_linux -f '137+bestaudio[ext=m4a]/136+bestaudio[ext=m4a]/135+bestaudio[ext=m4a]/134+bestaudio[ext=m4a]/133+bestaudio[ext=m4a]/160+bestaudio[ext=m4a]'"
+
     alias update="paru -Syyu"
     alias install="paru -S"
     alias search="paru -Ss"
