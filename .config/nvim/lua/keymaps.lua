@@ -32,5 +32,7 @@ map(  't','<A-V>',  '<C-\\><C-n>'  ,  {noremap = true}  )
 map('n', '<C-\\>', ':tab split<CR>:exec("tag ".expand("<cword>"))<CR>', { noremap = true, silent = true })
 map('n', '<A-]>', ':vsp<CR>:exec("tag ".expand("<cword>"))<CR>', { noremap = true, silent = true })
 map('n', '<leader>cc', ':NvimTreeCollapse<CR>', { noremap = true, silent = true })
+map('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+
 
 

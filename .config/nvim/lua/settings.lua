@@ -19,6 +19,11 @@ vim.opt.relativenumber = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Enable Emmet for HTML, JSX, and JavaScript files
+vim.cmd [[
+autocmd FileType html,css,scss,javascript.jsx EmmetInstall
+]]
+
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
@@ -44,6 +49,7 @@ local toggleterm = require'toggleterm'
 local telescope = require'telescope'
 local nvim_tree = require'nvim-tree'
 local codeium = require'codeium'
+local autopair = require'ultimate-autopair'
 
 treesitter.setup {
   ensure_installed = { "javascript", "tsx", "html", "css", "lua", "php"},
@@ -138,3 +144,40 @@ codeium.setup {
     enable = true
   }
 }
+
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+  pattern = {"*.ts", "*.tsx"},
+  callback = function()
+    if vim.fn.expand("%:e") == "tsx" then
+      vim.bo.filetype = "typescriptreact"
+    else
+      vim.bo.filetype = "typescript"
+    end
+  end
+})
+
+
+
+autopair.setup({
+  -- General configuration
+  pair_map = true,
+  map = true,
+  fast_wrap = true,
+  multi = true,
+
+  -- Enable autopair in all modes
+  enable_always = true,
+  enable_single_quote_pair = true,
+  enable_bracket_pair = true,
+  enable_curly_pair = true,
+  enable_angle_pair = true,
+  enable_backtick_pair = true,
+  enable_parenthesis_pair = true,
+
+  -- Disable checks that might prevent autopair
+  check_not_in_macro = false,
+  check_not_in_string = false,
+  check_not_in_quotes = false,
+  check_not_before_text = false,
+  check_not_after_text = false,
+})

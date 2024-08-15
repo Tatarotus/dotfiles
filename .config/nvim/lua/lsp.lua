@@ -1,6 +1,4 @@
 local cmp = require'cmp'
-local nvim_lsp = require'lspconfig'
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require'lspconfig'
 local mason = require'mason'
 local mason_lspconfig = require'mason-lspconfig'
@@ -35,15 +33,6 @@ local on_attach = function(_, bufnr)
   -- buf_set_keymap('n', '<space>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
--- local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
--- for _, lsp in ipairs(servers) do
---   nvim_lsp[lsp].setup {
---     on_attach = on_attach,
---     flags = {
---       debounce_text_changes = 150,
---     }
---   }
--- end
 
 cmp.setup({
   snippet = {
@@ -150,7 +139,7 @@ mason_lspconfig.setup({
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
-local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
+-- local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     capabilities = capabilities,
@@ -158,5 +147,21 @@ for _, lsp in ipairs(servers) do
     flags = {
       debounce_text_changes = 150,
     }
+  -- nvim_lsp[lsp].setup {
+  --   capabilities = capabilities,
+  --   on_attach = on_attach,
+  --   flags = {
+  --     debounce_text_changes = 150,
+  --   }
+  -- }
   }
 end
+-- local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
+-- for _, lsp in ipairs(servers) do
+--   nvim_lsp[lsp].setup {
+--     on_attach = on_attach,
+--     flags = {
+--       debounce_text_changes = 150,
+--     }
+--   }
+-- end

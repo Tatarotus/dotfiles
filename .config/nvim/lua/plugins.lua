@@ -1,6 +1,7 @@
 vim.cmd([[
 call plug#begin()
 Plug 'junegunn/vim-plug'
+Plug 'mattn/emmet-vim'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'sainnhe/sonokai'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -8,7 +9,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'ryanoasis/vim-devicons'
-Plug 'jiangmiao/auto-pairs'
+Plug 'altermo/ultimate-autopair.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'Exafunction/codeium.nvim', { 'branch': 'main' }
 Plug 'williamboman/mason.nvim'
