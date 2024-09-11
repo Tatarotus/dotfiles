@@ -42,9 +42,10 @@ cmp.setup({
   },
   window = {
    -- completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered({
-      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
-    }),
+    -- documentation = cmp.config.window.bordered({
+    --   winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+    -- }),
+    documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({ 
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),

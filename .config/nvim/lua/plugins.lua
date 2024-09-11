@@ -33,5 +33,8 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'tpope/vim-surround'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'jwalton512/vim-blade'
+Plug 'pantharshit00/vim-prisma'
+Plug 'sbdchd/neoformat'
+Plug 'projekt0n/github-nvim-theme'
 call plug#end()
 ]])

@@ -1,6 +1,7 @@
 -- Basic Settings
 vim.opt.termguicolors = true
 vim.cmd('colorscheme dayfox')
+-- vim.cmd('colorscheme github_light')
 
 vim.cmd('syntax on')
 vim.opt.mouse = 'a'
@@ -52,7 +53,7 @@ local codeium = require'codeium'
 local autopair = require'ultimate-autopair'
 
 treesitter.setup {
-  ensure_installed = { "javascript", "tsx", "html", "css", "lua", "php"},
+  ensure_installed = { "javascript", "tsx", "html", "css", "lua", "php", "typescript"},
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
@@ -181,3 +182,21 @@ autopair.setup({
   check_not_before_text = false,
   check_not_after_text = false,
 })
+
+vim.g.neoformat_prisma_prettier = {
+    exe = 'prettier',
+    args = {'--stdin-filepath', '"%:p"', '--parser', 'prisma'},
+    stdin = 1,
+}
+
+vim.g.neoformat_enabled_prisma = {'prettier'}
+
+-- Enable autoformatting on save for Prisma files
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.prisma",
+    command = "undojoin | Neoformat",
+})
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', 'gr', builtin.lsp_references, {})
+
