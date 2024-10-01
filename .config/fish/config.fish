@@ -20,6 +20,9 @@ if status is-interactive
   alias install="paru -S"
   alias search="paru -Ss"
   alias remove="paru -Rns"
+  alias cpu="watch -n 1 'cat /proc/cpuinfo | grep -i mhz'"
+  alias turboon="sudo wrmsr -a 0x1a0 0x850089"
+  alias turbooff="sudo wrmsr -a 0x1a0 0x4000850089"
 
   #git alias
   alias gita="git add -A"

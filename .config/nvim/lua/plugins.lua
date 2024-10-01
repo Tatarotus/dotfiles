@@ -36,5 +36,6 @@ Plug 'jwalton512/vim-blade'
 Plug 'pantharshit00/vim-prisma'
 Plug 'sbdchd/neoformat'
 Plug 'projekt0n/github-nvim-theme'
+Plug 'barrett-ruth/import-cost.nvim'
 call plug#end()
 ]])

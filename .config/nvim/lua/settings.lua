@@ -200,3 +200,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', 'gr', builtin.lsp_references, {})
 
+local import_cost = require'import-cost'
+import_cost.setup()
