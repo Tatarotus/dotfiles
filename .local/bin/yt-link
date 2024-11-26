@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Check if input file is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 input_file"
+    exit 1
+fi
+
+# Input file
+INPUT_FILE="$1"
+
+# Extract URLs and format them
+COMMAND='yt'
+URLS=$(grep -oE 'https?://[^ ]+' "$INPUT_FILE" | awk '{print "\"" $0 "\""}' | tr '\n' ' ')
+
+# Combine the command and formatted URLs
+FULL_COMMAND="$COMMAND $URLS"
+
+# Output the result
+echo "$FULL_COMMAND"
+

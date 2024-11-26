@@ -1,0 +1,46 @@
+# Extends JavaScript snippets
+extends javascript
+
+snippet rafce "React Functional Component export"
+const $1 = () => {
+	return (
+		<div>
+			$1
+		</div>
+	)
+}
+
+export default $1
+$2
+endsnippet
+
+snippet usf "useState Hook" b
+const [${1:state}, set${1/^./\u$0/}] = useState(${2:initialValue});
+endsnippet
+
+snippet uef "useEffect Hook" b
+useEffect(() => {
+  ${1:// effect}
+  //return () => {
+  //};
+}, [${2:dependencies}]);
+endsnippet
+
+snippet frag "React Fragment" b
+<>
+  ${1:/* content */}
+</>
+endsnippet
+
+snippet json "JSON stringified debugger"
+<pre>(JSON.stringify(${0}, null, 2)</pre>
+endsnippet
+
+snippet tn "Terniary"
+$1 ? ($2) : ($3)
+endsnippet
+
+snippet ip "Basic Import"
+import  $1  from "$2"
+endsnippet
+
