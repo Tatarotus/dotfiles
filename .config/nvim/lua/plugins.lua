@@ -1,44 +1,62 @@
-vim.cmd([[
-call plug#begin()
-Plug 'junegunn/vim-plug'
-Plug 'mattn/emmet-vim'
-Plug 'EdenEast/nightfox.nvim'
-Plug 'sainnhe/sonokai'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-tree/nvim-tree.lua'
-Plug 'ryanoasis/vim-devicons'
-Plug 'altermo/ultimate-autopair.nvim'
-Plug 'tpope/vim-commentary'
-Plug 'Exafunction/codeium.nvim', { 'branch': 'main' }
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'onsails/lspkind-nvim'
-Plug 'SirVer/ultisnips'
-"Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-Plug 'mg979/vim-visual-multi'
-Plug 'w0rp/ale'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
-Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
-Plug 'tpope/vim-surround'
-Plug 'windwp/nvim-ts-autotag'
-Plug 'jwalton512/vim-blade'
-Plug 'pantharshit00/vim-prisma'
-Plug 'sbdchd/neoformat'
-Plug 'projekt0n/github-nvim-theme'
-Plug 'barrett-ruth/import-cost.nvim'
-Plug 'stephpy/vim-php-cs-fixer'       " PHP-CS-Fixer for code formatting
-Plug 'StanAngeloff/php.vim'           " PHP syntax highlighting and indenting
-Plug 'Robitx/gp.nvim'
-call plug#end()
-]])
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+require("lazy").setup({
+  -- Core Plugins
+  { 'nvim-lua/plenary.nvim' },
+  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', cmd='Telescope' },
+  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', event = 'BufReadPost' },
+  { 'nvim-treesitter/nvim-treesitter-context', event = 'BufReadPost' },
+  { 'p00f/nvim-ts-rainbow', event = 'BufReadPost' },
+  { 'nvim-lualine/lualine.nvim', event = 'VimEnter' },
+  { 'nvim-tree/nvim-web-devicons' },
+  { 'nvim-tree/nvim-tree.lua', cmd = 'NvimTreeToggle' },
+  { 'akinsho/toggleterm.nvim', tag = '*' },
+  { 'windwp/nvim-ts-autotag' },
+
+  -- LSP and Completion
+  { 'williamboman/mason.nvim', event = 'BufReadPre' },
+  { 'williamboman/mason-lspconfig.nvim', event = 'BufReadPre' },
+  { 'neovim/nvim-lspconfig', event = 'BufReadPre' },
+  { 'hrsh7th/nvim-cmp', event = 'InsertEnter' },
+  { 'hrsh7th/cmp-nvim-lsp', event = 'InsertEnter', dependencies = {'hrsh7th/nvim-cmp'} },
+  { 'hrsh7th/cmp-buffer', event = 'InsertEnter', dependencies = {'hrsh7th/nvim-cmp'} },
+  { 'hrsh7th/cmp-path', event = 'InsertEnter', dependencies = {'hrsh7th/nvim-cmp'} },
+  { 'hrsh7th/cmp-cmdline', event = 'CmdlineEnter', dependencies = {'hrsh7th/nvim-cmp'} },
+  { 'onsails/lspkind-nvim', event = 'InsertEnter', dependencies = {'hrsh7th/nvim-cmp'} },
+
+  -- Snippets
+  { 'SirVer/ultisnips', event = 'InsertEnter' },
+
+  -- Themes and Colors
+  { 'EdenEast/nightfox.nvim', event = 'ColorScheme' },
+  { 'sainnhe/sonokai', event = 'ColorScheme' },
+  { 'projekt0n/github-nvim-theme', event = 'ColorScheme' },
+
+  -- Utilities
+  { 'tpope/vim-commentary', event = 'BufReadPost' },
+  { 'tpope/vim-surround', event = 'InsertEnter'   },
+  { 'mg979/vim-visual-multi', event = 'VimEnter' },
+  { 'jwalton512/vim-blade', ft = 'blade', event = 'BufReadPost', },
+  { 'pantharshit00/vim-prisma', ft = 'prisma', event = 'BufReadPost' },
+  { 'barrett-ruth/import-cost.nvim', 
+     ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+     event = 'BufReadPost' },
+  { 'Exafunction/codeium.nvim', branch = 'main', event = 'InsertEnter' },
+  { 'Robitx/gp.nvim', event = 'BufReadPost' },
+  { 'nvimtools/none-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim', 'nvimtools/none-ls-extras.nvim' }, event = 'VeryLazy' },
+
+
+  -- Language Specific
+  { 'prettier/vim-prettier', build = 'npm install', ft = {'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'html'} },
+  { 'stephpy/vim-php-cs-fixer', ft = 'php' },
+  { 'StanAngeloff/php.vim', ft = 'php' },
+})

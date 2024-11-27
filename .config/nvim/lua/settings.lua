@@ -50,7 +50,6 @@ local toggleterm = require'toggleterm'
 local telescope = require'telescope'
 local nvim_tree = require'nvim-tree'
 local codeium = require'codeium'
-local autopair = require'ultimate-autopair'
 
 treesitter.setup {
   ensure_installed = { "javascript", "tsx", "html", "css", "lua", "php", "typescript"},
@@ -160,32 +159,6 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
   end
 })
 
-
-
-autopair.setup({
-  -- General configuration
-  pair_map = true,
-  map = true,
-  fast_wrap = true,
-  multi = true,
-
-  -- Enable autopair in all modes
-  enable_always = true,
-  enable_single_quote_pair = true,
-  enable_bracket_pair = true,
-  enable_curly_pair = true,
-  enable_angle_pair = true,
-  enable_backtick_pair = true,
-  enable_parenthesis_pair = true,
-
-  -- Disable checks that might prevent autopair
-  check_not_in_macro = false,
-  check_not_in_string = false,
-  check_not_in_quotes = false,
-  check_not_before_text = false,
-  check_not_after_text = false,
-})
-
 vim.g.neoformat_prisma_prettier = {
     exe = 'prettier',
     args = {'--stdin-filepath', '"%:p"', '--parser', 'prisma'},
@@ -215,4 +188,27 @@ require('gp').setup({
     },
   },
 })
+
+
+local null_ls = require("null-ls")
+-- Register built-in sources for linting and formatting
+null_ls.setup({
+debbug = true,
+    sources = {
+        -- Formatting
+        null_ls.builtins.formatting.prettier, -- for JavaScript/TypeScript/HTML/CSS
+        null_ls.builtins.formatting.stylua, -- for Lua
+        null_ls.builtins.formatting.phpcsfixer, -- for PHP
+        require("none-ls.diagnostics.eslint_d"), -- for JS
+        null_ls.builtins.diagnostics.phpcs, -- for PHP
+    },
+    -- Diagnostics display customization (optional)
+    diagnostics_format = "[#{c}] #{m} (#{s})",
+    on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+        end
+    end,
+})
+
 

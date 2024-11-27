@@ -167,8 +167,9 @@ end
 --   }
 -- end
 --
+--
 
-lspconfig.intelephense.setup{
+require'lspconfig'.intelephense.setup{
   root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
   settings = {
     intelephense = {
@@ -177,5 +178,16 @@ lspconfig.intelephense.setup{
       };
     };
   };
+}
+require'lspconfig'.emmet_ls.setup{
+    filetypes = { "html", "blade" },
+    init_options = {
+        html = {
+            options = {
+                ["bem.enabled"] = true,
+                -- Add more options as per your need
+            }
+        }
+    }
 }
 
