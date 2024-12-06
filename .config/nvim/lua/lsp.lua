@@ -190,4 +190,10 @@ require'lspconfig'.emmet_ls.setup{
         }
     }
 }
-
+require'lspconfig'.phpcs.setup{
+    cmd = { "phpcs", "--standard=PSR12", "--report=emacs", "--colors", "--extensions=php", "--ignore=vendor" },
+    settings = {
+        phpcs = {
+        }
+    }
+}

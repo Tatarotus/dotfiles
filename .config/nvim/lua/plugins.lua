@@ -13,7 +13,7 @@ require("lazy").setup({
   -- Core Plugins
   { 'nvim-lua/plenary.nvim' },
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', cmd='Telescope' },
-  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', event = 'BufReadPost' },
+  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   { 'nvim-treesitter/nvim-treesitter-context', event = 'BufReadPost' },
   { 'p00f/nvim-ts-rainbow', event = 'BufReadPost' },
   { 'nvim-lualine/lualine.nvim', event = 'VimEnter' },
@@ -23,7 +23,7 @@ require("lazy").setup({
   { 'windwp/nvim-ts-autotag' },
 
   -- LSP and Completion
-  { 'williamboman/mason.nvim', event = 'BufReadPre' },
+  { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim', event = 'BufReadPre' },
   { 'neovim/nvim-lspconfig', event = 'BufReadPre' },
   { 'hrsh7th/nvim-cmp', event = 'InsertEnter' },
@@ -34,7 +34,7 @@ require("lazy").setup({
   { 'onsails/lspkind-nvim', event = 'InsertEnter', dependencies = {'hrsh7th/nvim-cmp'} },
 
   -- Snippets
-  { 'SirVer/ultisnips', event = 'InsertEnter' },
+  -- { 'SirVer/ultisnips', event = 'InsertEnter' },
 
   -- Themes and Colors
   { 'EdenEast/nightfox.nvim', event = 'ColorScheme' },
@@ -49,10 +49,13 @@ require("lazy").setup({
   { 'pantharshit00/vim-prisma', ft = 'prisma', event = 'BufReadPost' },
   { 'barrett-ruth/import-cost.nvim', 
      ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
-     event = 'BufReadPost' },
+     event = 'InsertEnter' },
   { 'Exafunction/codeium.nvim', branch = 'main', event = 'InsertEnter' },
   { 'Robitx/gp.nvim', event = 'BufReadPost' },
-  { 'nvimtools/none-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim', 'nvimtools/none-ls-extras.nvim' }, event = 'VeryLazy' },
+  { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, event = 'VeryLazy' },
+  { 'folke/noice.nvim', event = 'VeryLazy', dependencies = { 'MunifTanjim/nui.nvim' }
+  },
+  { 'altermo/ultimate-autopair.nvim', event={'InsertEnter','CmdlineEnter'}, branch='v0.6'},
 
 
   -- Language Specific
