@@ -15,7 +15,6 @@ if status is-interactive
   alias y="pnpm"
   # alias yt="youtube-dl -f 'bestvideo[ext=mp4][height<=1080]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
   alias yt="yt-dlp_linux -f '137+bestaudio[ext=m4a]/136+bestaudio[ext=m4a]/135+bestaudio[ext=m4a]/134+bestaudio[ext=m4a]/133+bestaudio[ext=m4a]/160+bestaudio[ext=m4a]'"
-
   alias update="paru -Syyu"
   alias install="paru -S"
   alias search="paru -Ss"
@@ -39,5 +38,14 @@ if status is-interactive
   fish_add_path $HOME/.config/composer/vendor/bin/
   fish_add_path $HOME/.npm-global/bin/
   fish_add_path $BUN_INSTALL/bin
+
+if status --is-interactive
+    and not test -n "$TMUX"  # Only start tmux if no session is active
+    tmux
+end
+
+function d
+    cd (find . -type d -print | fzf)
+end
 
 end

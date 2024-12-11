@@ -51,9 +51,6 @@ vim.cmd [[
 autocmd FileType html,css,scss,javascript EmmetInstall
 ]]
 
--- UltiSnips configuration
-vim.g.UltiSnipsSnippetDirectories = { vim.fn.expand("~/.config/nvim/UltiSnips") }
-vim.cmd [[autocmd BufNewFile,BufRead *.blade.php set filetype=blade]]
 
 -- Treesitter configuration
 require'nvim-treesitter.configs'.setup {
@@ -190,15 +187,6 @@ au({"BufNewFile", "BufRead"}, {
     vim.bo.filetype = ext == "tsx" and "typescriptreact" or "typescript"
   end,
 })
-
--- UltiSnips filetype additions
-au("FileType", {
-    pattern = "javascriptreact",
-    callback = function()
-        vim.cmd("UltiSnipsAddFiletypes javascriptreact")
-    end,
-})
-
 
 -- GP setup for Grok-beta integration
 require('gp').setup({

@@ -36,9 +36,6 @@ end
 
 cmp.setup({
   snippet = {
-    expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body) -- For UltiSnips users.
-    end,
   },
   window = {
    -- completion = cmp.config.window.bordered(),
@@ -56,27 +53,8 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-        feedkey("<C-R>=UltiSnips#JumpForwards()<CR>", "")
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-        feedkey("<C-R>=UltiSnips#JumpBackwards()<CR>", "")
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
-    { name = 'ultisnips' },
     { name = 'nvim_lsp' },
     { name = "codeium" },
   }, {
@@ -89,7 +67,6 @@ cmp.setup({
       vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
       -- set a name for each source
       vim_item.menu = ({
-        ultisnips = "[US]",
         codeium = "[C]",
         nvim_lsp = "[LSP]",
         buffer = "[BUF]",

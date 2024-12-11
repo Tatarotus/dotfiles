@@ -34,7 +34,6 @@ require("lazy").setup({
   { 'onsails/lspkind-nvim', event = 'InsertEnter', dependencies = {'hrsh7th/nvim-cmp'} },
 
   -- Snippets
-  -- { 'SirVer/ultisnips', event = 'InsertEnter' },
 
   -- Themes and Colors
   { 'EdenEast/nightfox.nvim', event = 'ColorScheme' },
