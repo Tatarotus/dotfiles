@@ -15,13 +15,7 @@ if status is-interactive
   alias y="pnpm"
   # alias yt="youtube-dl -f 'bestvideo[ext=mp4][height<=1080]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
   alias yt="yt-dlp_linux -f '137+bestaudio[ext=m4a]/136+bestaudio[ext=m4a]/135+bestaudio[ext=m4a]/134+bestaudio[ext=m4a]/133+bestaudio[ext=m4a]/160+bestaudio[ext=m4a]'"
-  alias update="paru -Syyu"
-  alias install="paru -S"
-  alias search="paru -Ss"
-  alias remove="paru -Rns"
   alias cpu="watch -n 1 'cat /proc/cpuinfo | grep -i mhz'"
-  alias turboon="sudo wrmsr -a 0x1a0 0x850089"
-  alias turbooff="sudo wrmsr -a 0x1a0 0x4000850089"
 
   #git alias
   alias gita="git add -A"
@@ -41,7 +35,20 @@ if status is-interactive
 
 if status --is-interactive
     and not test -n "$TMUX"  # Only start tmux if no session is active
-    tmux
+    # tmux
+    set session_name "sam"
+
+    # Check if session exists
+    if not tmux has-session -t "$session_name" 2>/dev/null
+        tmux new-session -d -s "$session_name" 'dooit'  \; \
+             rename-window 'SMRE' \; \
+             new-window -n 'Resolve' \; \
+             select-window -t 1 \; \
+             attach
+    else
+        tmux attach -t "$session_name"
+    fi
+    end
 end
 
 function d

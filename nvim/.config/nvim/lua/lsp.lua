@@ -167,10 +167,21 @@ require'lspconfig'.emmet_ls.setup{
         }
     }
 }
-require'lspconfig'.phpcs.setup{
-    cmd = { "phpcs", "--standard=PSR12", "--report=emacs", "--colors", "--extensions=php", "--ignore=vendor" },
-    settings = {
-        phpcs = {
-        }
+
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig.configs')
+
+if not configs.phpcs then
+  configs.phpcs = {
+    default_config = {
+      cmd = {'phpcs', '--standard=PSR12', '-q', '--report=json'},
+      filetypes = {'php'},
+      root_dir = function(fname)
+        return lspconfig.util.find_git_ancestor(fname) or vim.loop.cwd()
+      end,
+      settings = {}
     }
-}
+  }
+end
+
+lspconfig.phpcs.setup{}

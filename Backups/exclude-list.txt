@@ -1,0 +1,104 @@
+# Temporary home items
+.gvfs
+.local/share/flatpak/appstream
+.local/share/gvfs-metadata
+.local/share/Trash
+.local/share/nvm/**
+.cache
+.dbus
+.xsession-errors
+.XAuthority
+.gksu.lock
+tmp*
+Backups/**
+
+# Not worth keeping
+Videos/Youtube/
+rclone/
+
+# Encrypted/private directories
+.ecryptfs
+.Private
+
+.var/**/cache/
+
+# SNAP-specific paths
+snap/
+
+# Docker images
+.local/share/docker/
+
+# Development-specific directories and files
+# Visual Studio Code
+.config/Code/
+.vscode/extensions/
+
+# Gradle build
+build/*
+
+# NodeJS-related paths
+# Node Package Manager cache
+.npm
+# Dependency directories
+node_modules/*
+jspm_packages/*
+# Snowpack dependency directory (https://snowpack.dev/)
+web_modules/*
+
+#Bun
+.bun
+.bun
+
+# Python virtual environments
+.venv-py3
+
+# System-specific files
+.xsession-errors
+.recently-used
+.recently-used.xbel
+.thumbnails
+.Xauthority
+.ICEauthority
+.gksu.lock
+.pulse
+.pulse-cookie
+.esd_authorization
+
+# Firefox-specific paths
+.mozilla/firefox/*/storage
+.mozilla/firefox/*/Cache
+# Crash dumps
+.mozilla/firefox/*/minidumps
+# Session-specific files
+.mozilla/firefox/*/.parentlock
+# Phishing database (recreated)
+.mozilla/firefox/*/urlclassifier3.sqlite
+# Blacklisted extensions
+.mozilla/firefox/*/blocklist.xml
+# Extension database (recreated on startup)
+.mozilla/firefox/*/extensions.sqlite
+.mozilla/firefox/*/extensions.sqlite-journal
+.mozilla/firefox/*/extensions.rdf
+.mozilla/firefox/*/extensions.ini
+.mozilla/firefox/*/extensions.cache
+# Cached UI data (recreated)
+.mozilla/firefox/*/XUL.mfasl
+.mozilla/firefox/*/XPC.mfasl
+.mozilla/firefox/*/xpti.dat
+.mozilla/firefox/*/compreg.dat
+# Cached plugin data (recreated)
+.mozilla/firefox/*/pluginreg.dat
+
+# Chromium-specific paths
+.config/google-chrome/Default/Local Storage
+.config/google-chrome/Default/Session Storage
+.config/google-chrome/Default/Application Cache
+.config/google-chrome/Default/Archived History
+.config/google-chrome/Default/History
+.config/google-chrome/Default/Favicons
+.config/google-chrome/Default/**
+
+.local/share/pnpm/**
+.local/share/nvim/plugged/**
+
+.config/composer/vendor/**
