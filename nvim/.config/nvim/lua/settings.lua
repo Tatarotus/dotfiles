@@ -164,18 +164,18 @@ require'codeium'.setup {
 }
 
 -- Autopair configuration
-require'ultimate-autopair'.setup({
-  pair_map = true,
-  map = true,
-  fast_wrap = true,
-  multi = true,
-  enable_single_quote_pair = true,
-  enable_bracket_pair = true,
-  enable_curly_pair = true,
-  enable_angle_pair = true,
-  enable_backtick_pair = true,
-  enable_parenthesis_pair = true,
-})
+-- require'ultimate-autopair'.setup({
+--   pair_map = true,
+--   map = true,
+--   fast_wrap = true,
+--   multi = true,
+--   enable_single_quote_pair = true,
+--   enable_bracket_pair = true,
+--   enable_curly_pair = true,
+--   enable_angle_pair = true,
+--   enable_backtick_pair = true,
+--   enable_parenthesis_pair = true,
+-- })
 
 -- Custom filetype detection for JavaScript React and Blade files
 local au = vim.api.nvim_create_autocmd

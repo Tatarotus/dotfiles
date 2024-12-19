@@ -52,7 +52,7 @@ require("lazy").setup({
   { 'Exafunction/codeium.nvim', branch = 'main', event = 'InsertEnter' },
   { 'Robitx/gp.nvim', event = 'BufReadPost' },
   { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, event = 'VeryLazy' },
-  { 'altermo/ultimate-autopair.nvim', event={'InsertEnter','CmdlineEnter'}, branch='v0.6'},
+  -- { 'altermo/ultimate-autopair.nvim', event={'InsertEnter','CmdlineEnter'}, branch='v0.6'},
 
 
   -- Language Specific
