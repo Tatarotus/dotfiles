@@ -46,12 +46,6 @@ vim.opt.clipboard = 'unnamedplus'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- Enable Emmet for HTML, CSS, SCSS, JavaScript files
-vim.cmd [[
-autocmd FileType html,css,scss,javascript EmmetInstall
-]]
-
-
 -- Treesitter configuration
 require'nvim-treesitter.configs'.setup {
   auto_install = true,
@@ -225,6 +219,7 @@ null_ls.setup({
     end,
 })
 
+
 -- Noice setup for enhanced UI elements
 -- require("noice").setup({
 --   lsp = {
@@ -277,3 +272,18 @@ null_ls.setup({
 --         require("noice").enable()
 --     end,
 -- })
+require('neorg').setup {
+  load = {
+    -- Core modules
+    ["core.defaults"] = {},  -- Default setup for Neorg
+    ["core.concealer"] = {},  -- Ensure the concealer module is explicitly loaded
+    ["core.dirman"] = {  -- Your workspace and directory setup
+      config = {
+        workspaces = {
+          my_workspace = "~/neorg"
+        }
+      }
+    }
+  }
+}
+

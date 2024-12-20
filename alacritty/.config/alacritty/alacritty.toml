@@ -69,9 +69,9 @@ unfocused_hollow = true
 size = 13.5
 # use_thin_strokes = false
 
-[font.bold]
-family = "FiraCode Nerd Font Mono"
-style = "Bold"
+# [font.bold]
+# family = "FiraCode Nerd Font Mono"
+# style = "Bold"
 
 # [font.debug]
 # persistent_logging = false
@@ -80,14 +80,17 @@ style = "Bold"
 x = 0
 y = 0
 
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
 [font.italic]
-family = "FiraCode Nerd Font Mono"
+family = "JetBrains Mono"
 style = "Italic"
 
-[font.normal]
-family = "FiraCode Nerd Font Mono"
-#family = "MonoLisa Nerd Font Mono"
-style = "Regular"
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
 
 [font.offset]
 x = 0

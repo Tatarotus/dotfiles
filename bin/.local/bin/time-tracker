@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Define the log file path
+LOG_FILE="/home/sam/SMRE/3.Output/time_tracker.log"
+
+# Function to log the timestamp and message
+log_time() {
+  local timestamp=$(date '+%Y-%m-%d %H:%M:%S')  # Format: YYYY-MM-DD HH:MM:SS
+  local message="$1"                            # The custom message
+
+  # Append the log entry to the log file
+  echo "$timestamp - $message" >> "$LOG_FILE"
+
+  # Print confirmation
+  echo "Logged: $timestamp - $message"
+}
+
+# Check if a message is provided
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 \"your custom message\""
+  exit 1
+fi
+
+# Call the log_time function with the provided message
+log_time "$1"
+

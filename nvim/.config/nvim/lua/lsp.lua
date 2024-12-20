@@ -156,17 +156,6 @@ require'lspconfig'.intelephense.setup{
     };
   };
 }
-require'lspconfig'.emmet_ls.setup{
-    filetypes = { "html", "blade" },
-    init_options = {
-        html = {
-            options = {
-                ["bem.enabled"] = true,
-                -- Add more options as per your need
-            }
-        }
-    }
-}
 
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')

@@ -22,6 +22,7 @@ require("lazy").setup({
   { 'akinsho/toggleterm.nvim', tag = '*' },
   { 'windwp/nvim-ts-autotag' },
 
+
   -- LSP and Completion
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim', event = 'BufReadPre' },
@@ -53,6 +54,7 @@ require("lazy").setup({
   { 'Robitx/gp.nvim', event = 'BufReadPost' },
   { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, event = 'VeryLazy' },
   -- { 'altermo/ultimate-autopair.nvim', event={'InsertEnter','CmdlineEnter'}, branch='v0.6'},
+  { 'nvim-neorg/neorg', lazy = false, version = '*', config = true },
 
 
   -- Language Specific

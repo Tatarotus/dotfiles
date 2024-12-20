@@ -54,11 +54,11 @@ if status --is-interactive
 
     # Check if session exists
     if not tmux has-session -t "$session_name" 2>/dev/null
-        tmux new-session -d -s "$session_name" 'dooit'  \; \
-             rename-window 'SMRE' \; \
-             new-window -n 'Resolve' \; \
-             select-window -t 1 \; \
-             attach
+      tmux new-session -d -s "$session_name" \; \
+        rename-window 'SMRE' \; \
+        new-window -n 'Resolve' \; \
+        select-window -t 1 \; \
+        attach
     else
         tmux attach -t "$session_name"
     fi
