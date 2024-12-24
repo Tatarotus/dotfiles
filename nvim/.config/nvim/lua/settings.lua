@@ -200,8 +200,11 @@ null_ls.setup({
         null_ls.builtins.formatting.prettier, -- for JavaScript/TypeScript/HTML/CSS
         null_ls.builtins.formatting.stylua, -- for Lua
         null_ls.builtins.formatting.phpcsfixer, -- for PHP
+        null_ls.builtins.diagnostics.eslint.with({
+            diagnostics_format = "[eslint] #{m} (#{c})",
+        }),
         -- Diagnostics
-        null_ls.builtins.diagnostics.eslint_d,
+        -- null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.diagnostics.phpcs.with({
               -- extra_args = { "--standard=PSR12" },
                  filetypes = { "php", "blade" },

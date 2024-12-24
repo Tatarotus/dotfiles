@@ -36,6 +36,16 @@ map('n', '<leader>cc', ':NvimTreeCollapse<CR>', { noremap = true, silent = true 
 map('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 map('n', '<C-c>', ':GpRewrite<CR>', {silent = true, noremap = true, expr = false})
 map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { noremap = true, silent = true })
+map('i', '<C-j>', 'vsnip#available(1) ? "<Plug>(vsnip-expand)" : "<C-j>"', {expr = true})
+
+-- local function map(mode, lhs, rhs, opts)
+--   local options = { noremap = true, silent = true }
+--   if opts then
+--     options = vim.tbl_extend('force', options, opts)
+--   end
+--   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+-- end
+
 
 -- local wk = require("which-key")
 

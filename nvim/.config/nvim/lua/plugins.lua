@@ -15,7 +15,7 @@ require("lazy").setup({
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', cmd='Telescope' },
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   { 'nvim-treesitter/nvim-treesitter-context', event = 'BufReadPost' },
-  { 'p00f/nvim-ts-rainbow', event = 'BufReadPost' },
+  -- { 'p00f/nvim-ts-rainbow', event = 'BufReadPost' },
   { 'nvim-lualine/lualine.nvim', event = 'VimEnter' },
   { 'nvim-tree/nvim-web-devicons' },
   { 'nvim-tree/nvim-tree.lua', cmd = 'NvimTreeToggle' },
@@ -35,6 +35,14 @@ require("lazy").setup({
   { 'onsails/lspkind-nvim', event = 'InsertEnter', dependencies = {'hrsh7th/nvim-cmp'} },
 
   -- Snippets
+  { "hrsh7th/vim-vsnip", event = "InsertEnter", config = function()
+      vim.g.vsnip_snippet_dir = "~/.config/nvim/snippets"
+    end
+  },
+  { "hrsh7th/cmp-vsnip", event = "InsertEnter", dependencies = {"hrsh7th/vim-vsnip"} },
+
+  -- Themes and Colors
+  { 'EdenEast/nightfox.nvim', event = 'ColorScheme' },
 
   -- Themes and Colors
   { 'EdenEast/nightfox.nvim', event = 'ColorScheme' },
@@ -55,6 +63,7 @@ require("lazy").setup({
   { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, event = 'VeryLazy' },
   -- { 'altermo/ultimate-autopair.nvim', event={'InsertEnter','CmdlineEnter'}, branch='v0.6'},
   { 'nvim-neorg/neorg', lazy = false, version = '*', config = true },
+  { 'mattn/emmet-vim', lazy = true, ft = { 'html', 'css', 'blade', 'vue' } },
 
 
   -- Language Specific

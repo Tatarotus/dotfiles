@@ -36,6 +36,9 @@ end
 
 cmp.setup({
   snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vim-vsnip` users.
+    end,
   },
   window = {
    -- completion = cmp.config.window.bordered(),
@@ -55,6 +58,7 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
+   { name = 'vsnip' },
     { name = 'nvim_lsp' },
     { name = "codeium" },
   }, {
