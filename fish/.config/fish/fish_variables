@@ -1,6 +1,9 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export GROQ_KEY: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
+SETUVAR --export KLUSTER_KEY:dc02cb9b\x2d388d\x2d43dd\x2da588\x2d783e7ebacc4c
 SETUVAR --export OPENAI_API_KEY:xai\x2dosMtfopYuZmbaPEyKr6zXDdGhPDbhCrhFh5V4E18fl4mVnXyRhbtsz1jTOj0cmDzvoKgVuRQsSMj6sxK
+SETUVAR --export SAMBA_KEY:9c1607db\x2d693c\x2d4f2e\x2db68b\x2d857d73b7eba5
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:\x7e/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_list\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e\x7e/\x2econfig/fish/completions/nvm\x2efish

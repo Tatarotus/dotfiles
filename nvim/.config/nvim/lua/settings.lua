@@ -185,12 +185,25 @@ au({"BufNewFile", "BufRead"}, {
 -- GP setup for Grok-beta integration
 require('gp').setup({
   providers = {
-    openai = {
+    samba = {
+      endpoint = "https://api.sambanova.ai/v1/chat/completions",
+      secret = os.getenv("SAMBA_KEY"),
+    },
+    grok = {
       endpoint = "https://api.x.ai/v1/chat/completions",
       secret = os.getenv("OPENAI_API_KEY"),
     },
+    kluster = {
+      endpoint = "https://api.kluster.ai/v1/chat/completions",
+      secret = os.getenv("KLUSTER_KEY"),
+    },
+    groq = {
+      endpoint = "https://api.groq.com/openai/v1/chat/completions",
+      secret = os.getenv("GROQ_KEY"),
+    },
   },
 })
+
 
 -- Null-ls setup for linting and formatting
 local null_ls = require("null-ls")
@@ -275,18 +288,95 @@ null_ls.setup({
 --         require("noice").enable()
 --     end,
 -- })
+--
+--
 require('neorg').setup {
   load = {
-    -- Core modules
-    ["core.defaults"] = {},  -- Default setup for Neorg
-    ["core.concealer"] = {},  -- Ensure the concealer module is explicitly loaded
-    ["core.dirman"] = {  -- Your workspace and directory setup
+    ["core.autocommands"] = {},
+    ["core.integrations.treesitter"] = {},
+    ["core.concealer"] = {},
+    ["core.defaults"] = {},
+    ["core.export"] = {
       config = {
-        workspaces = {
-          my_workspace = "~/neorg"
+        -- Additional export options (e.g., setting a default export folder)
+        markdown = {
+          -- Customize export settings for Markdown
+          include_timestamps = true,
+          -- Define custom export command behavior
         }
       }
-    }
+    },
+    ["core.export.markdown"] = {}, -- For Markdown export
+    ["core.ui.calendar"] = {}, -- Loads the calendar module
+    ["core.dirman"] = { -- Manage your directories
+      config = {
+        workspaces = {
+          my_workspace = "~/neorg",
+        }
+      }
+    },
   }
 }
+
+local last_health_check = 0
+local check_interval = 10 * 60 -- 10 minutes in seconds
+
+-- Autocommand to check Neorg health when opening .norg files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = "*.norg",
+    callback = function()
+        local current_time = vim.fn.localtime() -- Use localtime for clarity
+        
+        -- Check if enough time has passed since the last health check
+        if current_time - last_health_check >= check_interval then
+            -- Run checkhealth neorg and capture the output
+            local ok, output = pcall(vim.api.nvim_command_output, "checkhealth neorg")
+            if not ok then
+                -- Handle errors gracefully
+                vim.api.nvim_echo({ { "Error running :checkhealth neorg", "ErrorMsg" } }, true, {})
+                return
+            end
+
+            -- Split the output into lines
+            local lines = vim.split(output, "\n")
+            local issues = {}
+
+            -- Collect lines containing warnings or errors
+            for _, line in ipairs(lines) do
+                if line:find("%[ERROR%]") or line:find("%[WARN%]") then
+                    table.insert(issues, line)
+                end
+            end
+
+            -- If there are issues, display them in the echo area
+            if #issues > 0 then
+                local msg = "Neorg health check reported issues:\n" .. table.concat(issues, "\n") .. "\nRun :checkhealth neorg for details."
+                vim.api.nvim_echo({ { msg, "WarningMsg" } }, true, {})
+            else
+                vim.api.nvim_echo({ { "Neorg health check passed without issues.", "InfoMsg" } }, true, {})
+            end
+
+            -- Close the health check window if it exists
+            vim.defer_fn(function()
+                for _, win in pairs(vim.api.nvim_list_wins()) do
+                    local buf = vim.api.nvim_win_get_buf(win)
+                    local bufname = vim.api.nvim_buf_get_name(buf)
+
+                    -- Debug: Print inspected buffer names
+                    print("Inspecting buffer:", bufname)
+
+                    -- If the buffer is the health check buffer
+                    if bufname == "health://" then
+                        print("Closing health check window...")
+                        vim.api.nvim_win_close(win, true) -- Force close
+                        break
+                    end
+                end
+            end, 100) -- Add a short delay to ensure health check output is generated
+
+            -- Update the last health check time
+            last_health_check = current_time
+        end
+    end,
+})
 

@@ -64,6 +64,14 @@ require("lazy").setup({
   -- { 'altermo/ultimate-autopair.nvim', event={'InsertEnter','CmdlineEnter'}, branch='v0.6'},
   { 'nvim-neorg/neorg', lazy = false, version = '*', config = true },
   { 'mattn/emmet-vim', lazy = true, ft = { 'html', 'css', 'blade', 'vue' } },
+{ 'iamcco/markdown-preview.nvim',
+  cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+  build = 'cd app && yarn install',
+  init = function()
+    vim.g.mkdp_filetypes = { 'markdown' }
+  end,
+  ft = { 'markdown' },
+},
 
 
   -- Language Specific

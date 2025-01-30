@@ -37,6 +37,22 @@ map('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = tr
 map('n', '<C-c>', ':GpRewrite<CR>', {silent = true, noremap = true, expr = false})
 map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { noremap = true, silent = true })
 map('i', '<C-j>', 'vsnip#available(1) ? "<Plug>(vsnip-expand)" : "<C-j>"', {expr = true})
+-- Toggle Neorg Concealer
+map('n', '<Leader>tc', ':setlocal conceallevel=3 concealcursor=nc<CR>', { noremap = true, silent = true })
+map('n', '<Leader>tC', ':setlocal conceallevel=0<CR>', { noremap = true, silent = true })
+map('n', '<Leader>tt', ':Neorg toggle-concealer<CR>', { noremap = true, silent = true })
+map('n', '<C-p>', ':MarkdownPreviewToggle<CR>', { noremap = true, silent = true })
+map('n', '<leader>gp', ':GpChatPaste<CR>', { noremap = true, silent = true })      -- Create a patch
+map('n', '<leader>gA', ':#ApplyPatch<CR>', { noremap = true, silent = true })       -- Apply a patch
+map('n', '<leader>gd', ':#DeletePatch<CR>', { noremap = true, silent = true })      -- Delete a patch
+map('n', '<leader>gl', ':GpChatFinder<CR>', { noremap = true, silent = true })      -- List patches
+map('n', '<leader>gr', ':GpChatRespond<CR>', { noremap = true, silent = true })    -- Respond to a chat message
+map('n', '<leader>gn', ':GpChatNew<CR>', { noremap = true, silent = true })          -- Start a new chat
+map('n', '<leader>ga', ':GpNextAgent<CR>', { noremap = true, silent = true })        -- Switch to the next agent
+map('n', '<leader>gC', ':#ListChats<CR>', { noremap = true, silent = true })        -- List all chat sessions
+map('n', '<leader>gD', ':GpChatDelete<CR>', { noremap = true, silent = true })       -- Delete a chat session
+
+
 
 -- local function map(mode, lhs, rhs, opts)
 --   local options = { noremap = true, silent = true }

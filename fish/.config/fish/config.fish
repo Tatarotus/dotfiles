@@ -12,6 +12,7 @@ if status is-interactive
   zoxide init fish | source
   alias cd "z $argv"
   alias zz "z -"
+   alias rm "safe_rm"
   alias yt "yt-dlp_linux -f '137+bestaudio[ext=m4a]/136+bestaudio[ext=m4a]/135+bestaudio[ext=m4a]/134+bestaudio[ext=m4a]/133+bestaudio[ext=m4a]/160+bestaudio[ext=m4a]'"
   alias cpu "watch -n 1 'cat /proc/cpuinfo | grep -i mhz'"
 
@@ -40,6 +41,9 @@ if status is-interactive
   # custom variables
   set -gx BUN_INSTALL "$HOME/.bun"
   set -Ux OPENAI_API_KEY "xai-osMtfopYuZmbaPEyKr6zXDdGhPDbhCrhFh5V4E18fl4mVnXyRhbtsz1jTOj0cmDzvoKgVuRQsSMj6sxK"
+  set -Ux SAMBA_KEY "9c1607db-693c-4f2e-b68b-857d73b7eba5"
+  set -Ux KLUSTER_KEY "dc02cb9b-388d-43dd-a588-783e7ebacc4c"
+  set -Ux GROQ_KEY "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"
 
   # add custom paths
   fish_add_path "$HOME/.local/bin/"
@@ -70,3 +74,7 @@ function d
 end
 
 end
+
+set -gx WASMTIME_HOME "$HOME/.wasmtime"
+
+string match -r ".wasmtime" "$PATH" > /dev/null; or set -gx PATH "$WASMTIME_HOME/bin" $PATH

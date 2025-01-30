@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Generate a random filename (e.g., dta_123.txt)
-FILENAME="dta_$(date +%s).txt"
+# Generate a random filename (e.g., dta_123.md)
+FILENAME="dta_$(date +%s).md"
 
 # Define the directory where the file will be saved
-DIRECTORY="/home/sam/Documents/Knowledge_Base/DATA"
+DIRECTORY="/home/sam/SMRE/1.Input/DATA/RAW/"
 
 # Open nvim with the random filename
 nvim "$DIRECTORY/$FILENAME"

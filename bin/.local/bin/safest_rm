@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# Check if arguments are provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <pattern1> <pattern2> ..."
+    exit 1
+fi
+
+# Create /tmp/trash directory if it doesn't exist
+mkdir -p /tmp/trash
+
+# Dry-run: Find files and directories to delete
+echo "Checking files and directories to be deleted..."
+files_to_delete=()
+dirs_to_delete=()
+
+for pattern in "$@"; do
+    while IFS= read -r path; do
+        if [ -f "$path" ]; then
+            files_to_delete+=("$path")
+        elif [ -d "$path" ]; then
+            dirs_to_delete+=("$path")
+        fi
+    done < <(find . -name "$pattern" -print)
+done
+
+# Display files to be deleted
+if [ ${#files_to_delete[@]} -gt 0 ]; then
+    echo "The following files will be deleted:"
+    printf '%s\n' "${files_to_delete[@]}"
+fi
+
+# Display directories and their contents to be deleted
+if [ ${#dirs_to_delete[@]} -gt 0 ]; then
+    echo "The following directories will be deleted, along with their contents:"
+    for dir in "${dirs_to_delete[@]}"; do
+        echo "$dir"
+        find "$dir" -type f -exec echo "  File: {}" \;  # List files inside the directory
+    done
+fi
+
+
+# Ask for confirmation
+read -p "Do you want to proceed with deletion? (y/n): " confirm
+
+if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
+    # Backup and delete files
+    echo "Processing files..."
+    printf '%s\n' "${files_to_delete[@]}" | xargs -I {} -P 4 bash -c '
+        file="{}"
+        backup_path="/tmp/trash/$(basename "$file")_$(date +%s%N)"
+        if ln "$file" "$backup_path"; then
+            echo "Backup created: $backup_path"
+            rm -f "$file" && echo "Deleted: $file"
+        else
+            echo "Failed to create backup for: $file"
+        fi
+    '
+
+    # Backup and delete directories
+    echo "Processing directories..."
+    for dir in "${dirs_to_delete[@]}"; do
+        backup_dir="/tmp/trash/$(basename "$dir")_$(date +%s%N)"
+        mkdir -p "$backup_dir"
+        echo "Backing up and deleting directory: $dir"
+        find "$dir" -type f | while read -r file; do
+            relative_path="${file#$dir/}"
+            mkdir -p "$backup_dir/$(dirname "$relative_path")"
+            if ln "$file" "$backup_dir/$relative_path"; then
+                echo "Backup created for file: $backup_dir/$relative_path"
+            else
+                echo "Failed to backup file: $file"
+            fi
+        done
+        rm -rf "$dir" && echo "Deleted directory: $dir"
+    done
+    echo "Deletion completed."
+else
+    echo "Deletion canceled."
+fi
+
+
