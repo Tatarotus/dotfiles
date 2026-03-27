@@ -1,0 +1,31 @@
+add_newline = false
+# The brackets are safely locked in the root format string
+format = '[\[](bold blue)$username$hostname$directory$git_branch$git_status[\]](bold blue) $character'
+
+[username]
+show_always = true
+style_user = 'bold red'
+format = '[$user]($style)'
+
+[hostname]
+ssh_only = false
+style = 'bold green'
+# Hardcoding the yellow @ symbol safely outside the green hostname
+format = '[@](bold yellow)[$hostname]($style)'
+
+[directory]
+style = 'bold cyan'
+truncate_to_repo = true
+format = ' [$path]($style)'
+
+[git_branch]
+# We escaped the parentheses with \ so Starship treats them as plain text!
+format = ' [git:\(](bold blue)[$branch](bold red)[\)](bold blue)'
+
+[git_status]
+style = 'bold red'
+format = ' [$all_status$ahead_behind]($style)'
+
+[character]
+success_symbol = '[➜](bold green)'
+error_symbol = '[➜](bold red)'

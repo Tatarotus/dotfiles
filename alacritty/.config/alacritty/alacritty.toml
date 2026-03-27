@@ -1,0 +1,71 @@
+[colors.primary]
+background = "0xFFFFFF"
+foreground = "0x24292E"
+
+[colors.cursor]
+text = "0xFFFFFF"
+cursor = "0x24292E"
+
+[colors.normal]
+black   = "0x24292E"
+red     = "0xD73A49"
+green   = "0x28A745"
+yellow  = "0xDBAB09"
+blue    = "0x0366D6"
+magenta = "0x6F42C1"
+cyan    = "0x1B7C83"
+white   = "0x6A737D"
+
+[colors.bright]
+black   = "0x586069"
+red     = "0xCB2431"
+green   = "0x22863A"
+yellow  = "0xB08800"
+blue    = "0x005CC5"
+magenta = "0x5A32A3"
+cyan    = "0x127B8A"
+white   = "0x959DA5"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[font]
+size = 18
+
+[font.normal]
+family = "JetBrains Mono"
+
+# ==============================
+[window]
+decorations = "none"
+opacity = 0.98
+
+[window.dimensions]
+columns = 100
+lines = 28
+
+[window.padding]
+x = 15
+y = 15
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+# ==============================
+# Keyboard Shortcuts
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "T"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "W"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ToggleFullScreen"
+key = "F11"
+
