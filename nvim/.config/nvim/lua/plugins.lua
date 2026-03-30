@@ -120,7 +120,27 @@ require("lazy").setup({
     end
   },
   { 'Robitx/gp.nvim', config = true },
-  { 'nvim-neorg/neorg', version = '*', config = true },
+  {
+    "nvim-neorg/neorg",
+    lazy = false,  -- Neorg recommends disabling lazy-loading to ensure everything hooks up correctly
+    version = "*",
+    config = function()
+      require("neorg").setup({
+        load = {
+          ["core.defaults"] = {},  -- Loads default behavior, essential mappings, and logic
+          ["core.concealer"] = {}, -- Adds pretty icons and enables syntax concealing
+          ["core.dirman"] = {      -- Manages your Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes", -- Change this path to wherever you want to store your notes
+              },
+              default_workspace = "notes",
+            },
+          },
+        },
+      })
+    end,
+  },
   { 'iamcco/markdown-preview.nvim',
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview' },
     build = 'cd app && yarn install',
