@@ -1,3 +1,60 @@
+# ==========================================
+# Alacritty Configuration (~/.config/alacritty/alacritty.toml)
+# ==========================================
+
+[window]
+decorations = "none"
+opacity = 1.0
+
+# Initial Window Dimensions
+[window.dimensions]
+columns = 100
+lines = 28
+
+
+# Inner Window Padding
+[window.padding]
+x = 0
+y = 0
+
+# ==========================================
+# Scrolling
+# ==========================================
+[scrolling]
+history = 10000
+multiplier = 3
+
+# ==========================================
+# Font Configuration
+# ==========================================
+[font]
+size = 18.0
+
+
+# Using the exact name from your fc-list output
+[font.normal]
+ family = "JetBrainsMono Nerd Font"
+ style = "Regular"
+
+ [font.bold]
+ family = "JetBrainsMono Nerd Font"
+ style = "Bold"
+
+ [font.italic]
+ family = "JetBrainsMono Nerd Font"
+ style = "Italic"
+
+
+# ==========================================
+# Cursor Options
+# ==========================================
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+# ==========================================
+# Color Scheme (Light Theme)
+# ==========================================
 [colors.primary]
 background = "0xFFFFFF"
 foreground = "0x24292E"
@@ -26,46 +83,19 @@ magenta = "0x5A32A3"
 cyan    = "0x127B8A"
 white   = "0x959DA5"
 
-[cursor]
-style = "Block"
-unfocused_hollow = true
-
-[font]
-size = 18
-
-[font.normal]
-family = "JetBrains Mono"
-
-# ==============================
-[window]
-decorations = "none"
-opacity = 0.98
-
-[window.dimensions]
-columns = 100
-lines = 28
-
-[window.padding]
-x = 15
-y = 15
-
-[scrolling]
-history = 10000
-multiplier = 3
-
-# ==============================
-# Keyboard Shortcuts
+# ==========================================
+# Keyboard Bindings
+# ==========================================
 [[keyboard.bindings]]
-action = "SpawnNewInstance"
 key = "T"
 mods = "Control|Shift"
+action = "SpawnNewInstance"
 
 [[keyboard.bindings]]
-action = "Quit"
 key = "W"
 mods = "Control|Shift"
+action = "Quit"
 
 [[keyboard.bindings]]
-action = "ToggleFullScreen"
 key = "F11"
-
+action = "ToggleFullScreen"

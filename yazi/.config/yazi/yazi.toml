@@ -1,0 +1,47 @@
+# ==============================================================
+# Yazi Configuration (~/.config/yazi/yazi.toml)
+# ==============================================================
+
+[mgr]
+ratio          = [ 2, 3, 4 ]
+sort_by        = "alphabetical"
+sort_sensitive = false
+sort_reverse   = false
+sort_dir_first = true
+linemode       = "size"
+show_hidden    = false
+show_symlink   = true
+scrolloff      = 5
+
+[preview]
+tab_size        = 2
+max_width       = 600
+max_height      = 900
+cache_dir       = ""
+image_filter    = "triangle"
+image_quality   = 75
+sixel_fraction  = 15
+ueberzug_scale  = 1
+ueberzug_offset = [ 0, 0, 0, 0 ]
+
+[opener]
+edit = [
+	{ run = 'nvim "$@"', block = true, desc = "Edit" },
+]
+play = [
+	{ run = 'mpv "$@"', orphan = true, desc = "Play" },
+]
+open = [
+	{ run = 'xdg-open "$@"', desc = "Open" },
+]
+
+[open]
+rules = [
+	{ name = "*/", use = [ "edit", "open" ] },
+	{ mime = "text/*", use = [ "edit", "open" ] },
+	{ mime = "video/*", use = [ "play", "open" ] },
+	{ mime = "audio/*", use = [ "play", "open" ] },
+	{ mime = "inode/x-empty", use = [ "edit", "open" ] },
+	{ mime = "application/*", use = [ "open" ] },
+]
+

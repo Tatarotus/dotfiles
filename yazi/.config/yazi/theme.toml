@@ -1,0 +1,148 @@
+## Color palette
+## Inspired by https://github.com/projekt0n/github-nvim-theme (GitHub Light)
+# bg             "#ffffff" (Pure White)
+# ui_bg          "#f6f8fa" (Light Gray for tabs/alt backgrounds)
+# fg             "#24292f" (Dark Gray/Black for primary text)
+# muted_fg       "#57606a" (Subtle text for descriptions/borders)
+# border         "#d0d7de" (Subtle borders)
+# blue           "#0969da" (Primary Accent / Directories)
+# green          "#1a7f37" (Success / Executables / Copied)
+# red            "#cf222e" (Danger / Archives / Cut)
+# purple         "#8250df" (Media / Marked / Secondary Accent)
+# yellow         "#bf8700" (Warnings / Images)
+# cyan           "#0550ae" (Documents)
+
+[mgr]
+# The selected file highlight (Reversed background + bold for high visibility)
+hovered         = { reversed = true, bold = true }
+preview_hovered = { reversed = true }
+
+cwd = { fg = "#0969da", bold = true }
+
+marker_copied   = { fg = "#1a7f37", bg = "#1a7f37" }
+marker_cut      = { fg = "#cf222e", bg = "#cf222e" }
+marker_marked   = { fg = "#8250df", bg = "#8250df" }
+marker_selected = { fg = "#0969da", bg = "#0969da" }
+
+find_keyword  = { fg = "#0969da", bg = "#fff8c5" } # Blue text with yellow highlight
+find_position = {}
+
+count_copied   = { fg = "#ffffff", bg = "#1a7f37" }
+count_cut      = { fg = "#ffffff", bg = "#cf222e" }
+count_selected = { fg = "#ffffff", bg = "#0969da" }
+
+border_symbol = "│"
+border_style  = { fg = "#d0d7de" }
+
+[indicator]
+# Overrides default rounded edges and adds the custom arrow pointer
+padding = { open = "█", close = "" }
+
+[tabs]
+# Sharp, blocky tabs matching Neovim
+active   = { fg = "#ffffff", bg = "#0969da", bold = true }
+inactive = { fg = "#57606a", bg = "#f6f8fa" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+[mode]
+# Mode colors using GitHub syntax highlights
+normal_main = { fg = "#ffffff", bg = "#0969da", bold = true } # Blue
+normal_alt  = { fg = "#0969da", bg = "#f6f8fa" }
+select_main = { fg = "#ffffff", bg = "#1a7f37", bold = true } # Green
+select_alt  = { fg = "#1a7f37", bg = "#f6f8fa" }
+unset_main  = { fg = "#ffffff", bg = "#8250df", bold = true }  # Purple
+unset_alt   = { fg = "#8250df", bg = "#f6f8fa" }
+
+[status]
+# Maintaining the sharp geometric look
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+overall   = { fg = "#57606a", bg = "#ffffff" }
+
+progress_label  = { fg = "#0969da", bold = true }
+progress_normal = { fg = "#f6f8fa", bg = "#24292f" }
+progress_error  = { fg = "#f6f8fa", bg = "#cf222e" }
+
+# Permissions colored for quick scanning on a white background
+perm_type  = { fg = "#0969da", bold = true }
+perm_read  = { fg = "#1a7f37" }
+perm_write = { fg = "#cf222e" }
+perm_exec  = { fg = "#8250df" }
+perm_sep   = { fg = "#d0d7de" }
+
+[pick]
+border   = { fg = "#0969da" }
+active   = { fg = "#8250df", bold = true }
+inactive = {}
+
+[input]
+border   = { fg = "#0969da" }
+title    = { fg = "#24292f", bold = true }
+value    = { fg = "#24292f" }
+selected = { reversed = true }
+
+[completion]
+border   = { fg = "#0969da" }
+active   = { reversed = true }
+inactive = {}
+
+[tasks]
+border  = { fg = "#0969da" }
+title   = { fg = "#24292f", bold = true }
+hovered = { fg = "#8250df" }
+
+[which]
+cols            = 2
+separator       = " - "
+separator_style = { fg = "#d0d7de" }
+mask            = { bg = "#ffffff" }
+rest            = { fg = "#57606a" }
+cand            = { fg = "#0969da", bold = true }
+desc            = { fg = "#57606a" }
+
+[help]
+on      = { fg = "#0969da", bold = true }
+run     = { fg = "#8250df" }
+desc    = { fg = "#24292f" }
+hovered = { reversed = true, bold = true }
+footer  = { fg = "#ffffff", bg = "#0969da" }
+
+[notify]
+title_info  = { fg = "#1a7f37" }
+title_warn  = { fg = "#bf8700" }
+title_error = { fg = "#cf222e" }
+
+[filetype]
+rules = [
+    # Custom Workspace & Dev Files
+    { name = "*.go", fg = "#0550ae" },     # Go (Cyan)
+    { name = "*.py", fg = "#0969da" },     # Python (Blue)
+    { name = "*.c", fg = "#1a7f37" },      # C (Green)
+    { name = "*.norg", fg = "#8250df" },   # Neorg Notes (Purple)
+    { name = "*.md", fg = "#8250df" },     # Markdown (Purple)
+
+    # images (Yellow)
+    { mime = "image/*", fg = "#bf8700" },
+
+    # media (Purple)
+    { mime = "{audio,video}/*", fg = "#8250df" },
+
+    # archives (Red)
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#cf222e" },
+
+    # documents (Cyan)
+    { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#0550ae" },
+
+    # broken links (Red)
+    { url = "*", is = "orphan", fg = "#cf222e" },
+
+    # executables (Green)
+    { url = "*", is = "exec", fg = "#1a7f37" },
+
+    # fallback files (Dark Gray)
+    { url = "*", fg = "#24292f" },
+    
+    # directories (GitHub Blue)
+    { url = "*/", fg = "#0969da" },
+]
