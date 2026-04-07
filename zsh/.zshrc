@@ -192,3 +192,11 @@ npx()  { bunx "$@" }
 
 # Intercept 'nvm' to trigger the real environment load
 nvm() { _load_nvm "$@" }
+alias lt='eza --tree --icons'
+alias y='yazi'
+alias v='nvim'
+alias l='eza -CF --icons'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gs='git status'

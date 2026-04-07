@@ -46,28 +46,65 @@ require("lazy").setup({
 
   -- Core Utilities
   { 'nvim-lua/plenary.nvim' },
-  { 'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    cmd = 'Telescope',
-    config = function()
-      require'telescope'.setup{
-        defaults = {
-          file_ignore_patterns = { "^vendor/", "^node_modules/" },
-        },
-      }
-    end
-  },
-  { 'nvim-treesitter/nvim-treesitter',
+
+  -- Treesitter
+  { 
+    'nvim-treesitter/nvim-treesitter',
+    lazy = false,
     build = ':TSUpdate',
     config = function()
-      require'nvim-treesitter.configs'.setup {
+      local function register_neorg_parsers()
+        local parser_configs = require('nvim-treesitter.parsers')
+        if parser_configs.get_parser_configs then
+          parser_configs = parser_configs.get_parser_configs()
+        end
+
+        parser_configs.norg = {
+          install_info = {
+            url = 'https://github.com/nvim-neorg/tree-sitter-norg',
+            files = { 'src/parser.c', 'src/scanner.cc' },
+            revision = '6348056b999f06c2c7f43bb0a5aa7cfde5302712',
+            use_makefile = true,
+          },
+        }
+
+        parser_configs.norg_meta = {
+          install_info = {
+            url = 'https://github.com/nvim-neorg/tree-sitter-norg-meta',
+            files = { 'src/parser.c' },
+            revision = 'a479d1ca05848d0b51dd25bc9f71a17e0108b240',
+            use_makefile = true,
+          },
+        }
+      end
+
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'TSUpdate',
+        callback = register_neorg_parsers,
+      })
+
+      register_neorg_parsers()
+
+      local parser_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site', 'parser')
+      -- Neorg's norg parser currently needs the bootstrap script at
+      -- ~/.config/nvim/setup-neorg-parser.sh because :TSInstall norg uses an
+      -- incompatible tree-sitter-cli build path for scanner.cc.
+      pcall(vim.treesitter.language.add, 'norg', {
+        path = vim.fs.joinpath(parser_dir, 'norg.so'),
+      })
+      pcall(vim.treesitter.language.add, 'norg_meta', {
+        path = vim.fs.joinpath(parser_dir, 'norg_meta.so'),
+      })
+
+      require("nvim-treesitter.config").setup {
+        ensure_installed = { "lua", "vim", "vimdoc", "query", "markdown" },
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
-        autotag = { enable = true },
       }
     end
   },
+
   { 'nvim-tree/nvim-tree.lua',
     cmd = 'NvimTreeToggle',
     config = function()
@@ -120,27 +157,33 @@ require("lazy").setup({
     end
   },
   { 'Robitx/gp.nvim', config = true },
+
+  -- Neorg
   {
     "nvim-neorg/neorg",
-    lazy = false,  -- Neorg recommends disabling lazy-loading to ensure everything hooks up correctly
+    lazy = false,
     version = "*",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
       require("neorg").setup({
         load = {
-          ["core.defaults"] = {},  -- Loads default behavior, essential mappings, and logic
-          ["core.concealer"] = {}, -- Adds pretty icons and enables syntax concealing
-          ["core.dirman"] = {      -- Manages your Neorg workspaces
+          ["core.defaults"] = {},
+          ["core.concealer"] = {},
+          ["core.dirman"] = {
             config = {
               workspaces = {
-                notes = "~/notes", -- Change this path to wherever you want to store your notes
+                notes = "~/notes",
               },
               default_workspace = "notes",
             },
           },
+          -- You can uncomment this once everything is stable
+          -- ["core.esupports.metagen"] = { config = { type = "auto" } },
         },
       })
     end,
   },
+
   { 'iamcco/markdown-preview.nvim',
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview' },
     build = 'cd app && yarn install',
