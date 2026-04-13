@@ -105,6 +105,8 @@ alias gitr="git reset --hard"
 alias cd="z"
 alias zz="z -"
 
+# Hardware Info
+alias cpu="watch -n 1 'cat /proc/cpuinfo | grep -i mhz'"
 # ----- Functions -----
 
 # System Maintenance: Cleans package caches, app caches, trash, and logs
@@ -200,3 +202,6 @@ alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
 alias gs='git status'
+
+# opencode
+export PATH=/home/sam/.opencode/bin:$PATH
