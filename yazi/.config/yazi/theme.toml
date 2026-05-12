@@ -1,31 +1,49 @@
-## Color palette
-## Inspired by https://github.com/projekt0n/github-nvim-theme (GitHub Light)
-# bg             "#ffffff" (Pure White)
-# ui_bg          "#f6f8fa" (Light Gray for tabs/alt backgrounds)
-# fg             "#24292f" (Dark Gray/Black for primary text)
-# muted_fg       "#57606a" (Subtle text for descriptions/borders)
-# border         "#d0d7de" (Subtle borders)
-# blue           "#0969da" (Primary Accent / Directories)
-# green          "#1a7f37" (Success / Executables / Copied)
-# red            "#cf222e" (Danger / Archives / Cut)
-# purple         "#8250df" (Media / Marked / Secondary Accent)
-# yellow         "#bf8700" (Warnings / Images)
-# cyan           "#0550ae" (Documents)
+# $schema = "https://yazi-rs.github.io/schemas/theme.json"
+
+# =========================================================
+# GitHub Light Sharp
+# Flat TUI aesthetic inspired by:
+# - github-nvim-theme
+# - Neovim statuslines
+# - minimalist terminal tooling
+# =========================================================
+
+# ---------------------------------------------------------
+# Core Palette
+# ---------------------------------------------------------
+
+# bg         = #ffffff
+# panel      = #f6f8fa
+# fg         = #24292f
+# muted      = #57606a
+# border     = #d0d7de
+# blue       = #0969da
+# green      = #1a7f37
+# red        = #cf222e
+# purple     = #8250df
+# yellow     = #bf8700
+# cyan       = #0550ae
+
+# =========================================================
+# Manager
+# =========================================================
 
 [mgr]
-# The selected file highlight (Reversed background + bold for high visibility)
-hovered         = { reversed = true, bold = true }
-preview_hovered = { reversed = true }
-
 cwd = { fg = "#0969da", bold = true }
 
-marker_copied   = { fg = "#1a7f37", bg = "#1a7f37" }
-marker_cut      = { fg = "#cf222e", bg = "#cf222e" }
-marker_marked   = { fg = "#8250df", bg = "#8250df" }
-marker_selected = { fg = "#0969da", bg = "#0969da" }
+# cleaner selection
+hovered         = { reversed = true }
+preview_hovered = { reversed = true }
 
-find_keyword  = { fg = "#0969da", bg = "#fff8c5" } # Blue text with yellow highlight
-find_position = {}
+# search
+find_keyword  = { fg = "#0969da", bg = "#fff8c5", bold = true }
+find_position = { fg = "#24292f", bold = true }
+
+# marks
+marker_copied   = { fg = "#1a7f37", bold = true }
+marker_cut      = { fg = "#cf222e", bold = true }
+marker_marked   = { fg = "#8250df", bold = true }
+marker_selected = { fg = "#0969da", bold = true }
 
 count_copied   = { fg = "#ffffff", bg = "#1a7f37" }
 count_cut      = { fg = "#ffffff", bg = "#cf222e" }
@@ -38,111 +56,192 @@ border_style  = { fg = "#d0d7de" }
 # Overrides default rounded edges and adds the custom arrow pointer
 padding = { open = "█", close = "" }
 
+# =========================================================
+# Tabs
+# =========================================================
+
 [tabs]
-# Sharp, blocky tabs matching Neovim
-active   = { fg = "#ffffff", bg = "#0969da", bold = true }
+active   = { fg = "#ffffff", bg = "#24292f", bold = true }
 inactive = { fg = "#57606a", bg = "#f6f8fa" }
+
 sep_inner = { open = "", close = "" }
 sep_outer = { open = "", close = "" }
 
+# =========================================================
+# Mode
+# =========================================================
+
 [mode]
-# Mode colors using GitHub syntax highlights
-normal_main = { fg = "#ffffff", bg = "#0969da", bold = true } # Blue
-normal_alt  = { fg = "#0969da", bg = "#f6f8fa" }
-select_main = { fg = "#ffffff", bg = "#1a7f37", bold = true } # Green
+normal_main = { fg = "#ffffff", bg = "#24292f", bold = true }
+normal_alt  = { fg = "#57606a", bg = "#f6f8fa" }
+
+select_main = { fg = "#ffffff", bg = "#1a7f37", bold = true }
 select_alt  = { fg = "#1a7f37", bg = "#f6f8fa" }
-unset_main  = { fg = "#ffffff", bg = "#8250df", bold = true }  # Purple
-unset_alt   = { fg = "#8250df", bg = "#f6f8fa" }
+
+unset_main = { fg = "#ffffff", bg = "#8250df", bold = true }
+unset_alt  = { fg = "#8250df", bg = "#f6f8fa" }
+
+# =========================================================
+# Status
+# =========================================================
 
 [status]
-# Maintaining the sharp geometric look
+overall = { fg = "#57606a", bg = "#ffffff" }
+
 sep_left  = { open = "", close = "" }
 sep_right = { open = "", close = "" }
-overall   = { fg = "#57606a", bg = "#ffffff" }
 
 progress_label  = { fg = "#0969da", bold = true }
-progress_normal = { fg = "#f6f8fa", bg = "#24292f" }
-progress_error  = { fg = "#f6f8fa", bg = "#cf222e" }
+progress_normal = { fg = "#ffffff", bg = "#24292f" }
+progress_error  = { fg = "#ffffff", bg = "#cf222e" }
 
-# Permissions colored for quick scanning on a white background
 perm_type  = { fg = "#0969da", bold = true }
 perm_read  = { fg = "#1a7f37" }
-perm_write = { fg = "#cf222e" }
+perm_write = { fg = "#bf8700" }
 perm_exec  = { fg = "#8250df" }
 perm_sep   = { fg = "#d0d7de" }
 
-[pick]
-border   = { fg = "#0969da" }
-active   = { fg = "#8250df", bold = true }
-inactive = {}
+# =========================================================
+# Input
+# =========================================================
 
 [input]
-border   = { fg = "#0969da" }
+border   = { fg = "#d0d7de" }
 title    = { fg = "#24292f", bold = true }
 value    = { fg = "#24292f" }
 selected = { reversed = true }
 
+# =========================================================
+# Completion
+# =========================================================
+
 [completion]
-border   = { fg = "#0969da" }
+border = { fg = "#d0d7de" }
+
 active   = { reversed = true }
-inactive = {}
+inactive = { fg = "#57606a" }
+
+# =========================================================
+# Pick
+# =========================================================
+
+[pick]
+border = { fg = "#d0d7de" }
+
+active   = { fg = "#24292f", bold = true }
+inactive = { fg = "#57606a" }
+
+# =========================================================
+# Tasks
+# =========================================================
 
 [tasks]
-border  = { fg = "#0969da" }
+border  = { fg = "#d0d7de" }
 title   = { fg = "#24292f", bold = true }
-hovered = { fg = "#8250df" }
+hovered = { reversed = true }
+
+# =========================================================
+# Which
+# =========================================================
 
 [which]
-cols            = 2
-separator       = " - "
+cols = 2
+
+mask = { bg = "#ffffff" }
+
+cand = { fg = "#0969da", bold = true }
+rest = { fg = "#57606a" }
+desc = { fg = "#24292f" }
+
+separator       = " → "
 separator_style = { fg = "#d0d7de" }
-mask            = { bg = "#ffffff" }
-rest            = { fg = "#57606a" }
-cand            = { fg = "#0969da", bold = true }
-desc            = { fg = "#57606a" }
+
+# =========================================================
+# Help
+# =========================================================
 
 [help]
 on      = { fg = "#0969da", bold = true }
 run     = { fg = "#8250df" }
 desc    = { fg = "#24292f" }
-hovered = { reversed = true, bold = true }
-footer  = { fg = "#ffffff", bg = "#0969da" }
+
+hovered = { reversed = true }
+
+footer = { fg = "#57606a", bg = "#f6f8fa" }
+
+# =========================================================
+# Notify
+# =========================================================
 
 [notify]
 title_info  = { fg = "#1a7f37" }
 title_warn  = { fg = "#bf8700" }
 title_error = { fg = "#cf222e" }
 
+# =========================================================
+# Filetypes
+# =========================================================
+
 [filetype]
 rules = [
-    # Custom Workspace & Dev Files
-    { name = "*.go", fg = "#0550ae" },     # Go (Cyan)
-    { name = "*.py", fg = "#0969da" },     # Python (Blue)
-    { name = "*.c", fg = "#1a7f37" },      # C (Green)
-    { name = "*.norg", fg = "#8250df" },   # Neorg Notes (Purple)
-    { name = "*.md", fg = "#8250df" },     # Markdown (Purple)
 
-    # images (Yellow)
+    # directories
+    { url = "*/", fg = "#0969da", bold = true },
+
+    # symlink
+    { mime = "inode/symlink", fg = "#1a7f37" },
+
+    # executables
+    { mime = "application/x-executable", fg = "#1a7f37", bold = true },
+
+    # images
     { mime = "image/*", fg = "#bf8700" },
 
-    # media (Purple)
+    # media
     { mime = "{audio,video}/*", fg = "#8250df" },
 
-    # archives (Red)
-    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#cf222e" },
+    # archives
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma}", fg = "#cf222e" },
 
-    # documents (Cyan)
-    { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#0550ae" },
+    # documents
+    { mime = "application/{pdf,doc,docx,rtf,vnd.*}", fg = "#0550ae" },
 
-    # broken links (Red)
-    { url = "*", is = "orphan", fg = "#cf222e" },
+    # code
+    { name = "*.go",   mime = "text/x-go", fg = "#0550ae" },
+    { name = "*.rs",   mime = "text/x-rust", fg = "#cf222e" },
+    { name = "*.c",    mime = "text/x-c", fg = "#1a7f37" },
+    { name = "*.h",    mime = "text/x-c", fg = "#1a7f37" },
+    { name = "*.py",   mime = "text/x-python", fg = "#0969da" },
+    { name = "*.js",   mime = "text/javascript", fg = "#bf8700" },
+    { name = "*.ts",   mime = "text/typescript", fg = "#0969da" },
+    { name = "*.lua",  mime = "text/x-lua", fg = "#0969da" },
+    { name = "*.sh",   mime = "text/x-sh", fg = "#1a7f37" },
+    { name = "*.toml", mime = "text/x-toml", fg = "#57606a" },
+    { name = "*.json", mime = "application/json", fg = "#57606a" },
+    { name = "*.yaml", mime = "text/yaml", fg = "#57606a" },
+    { name = "*.yml",  mime = "text/yaml", fg = "#57606a" },
+    { name = "*.md",   mime = "text/markdown", fg = "#8250df" },
+    { name = "*.norg", mime = "text/plain", fg = "#8250df" },
 
-    # executables (Green)
-    { url = "*", is = "exec", fg = "#1a7f37" },
+    # orphan links
+    { mime = "inode/orphan", fg = "#cf222e" },
 
-    # fallback files (Dark Gray)
-    { url = "*", fg = "#24292f" },
-    
-    # directories (GitHub Blue)
-    { url = "*/", fg = "#0969da" },
+    # fallback
+    { mime = "*/*", fg = "#24292f" },
+]
+
+# =========================================================
+# Icons
+# =========================================================
+
+[icon]
+
+prepend_dirs = [
+    { name = "Desktop",   text = "󰟀", fg = "#0969da" },
+    { name = "Documents", text = "󰈙", fg = "#0550ae" },
+    { name = "Downloads", text = "󰉍", fg = "#0969da" },
+    { name = "Music",     text = "󰝚", fg = "#8250df" },
+    { name = "Pictures",  text = "󰉏", fg = "#bf8700" },
+    { name = "Videos",    text = "󰈫", fg = "#8250df" },
+    { name = "Projects",  text = "󰲋", fg = "#1a7f37" },
 ]

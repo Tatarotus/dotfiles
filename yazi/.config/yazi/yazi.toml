@@ -37,7 +37,7 @@ open = [
 
 [open]
 rules = [
-	{ name = "*/", use = [ "edit", "open" ] },
+	{ name = "*/", mime = "inode/directory", use = [ "edit", "open" ] },
 	{ mime = "text/*", use = [ "edit", "open" ] },
 	{ mime = "video/*", use = [ "play", "open" ] },
 	{ mime = "audio/*", use = [ "play", "open" ] },
