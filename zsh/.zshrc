@@ -4,7 +4,8 @@
 
 # ----- Core Variables & Paths -----
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$HOME/.local/bin:$HOME/.config/composer/vendor/bin:$BUN_INSTALL/bin:$WASMTIME_HOME/bin:$PATH"
+export GOPATH=$HOME/go/bin
+export PATH="$HOME/.local/bin:$HOME/.config/composer/vendor/bin:$BUN_INSTALL/bin:$WASMTIME_HOME/bin:$GOPATH:$PATH"
 
 export EDITOR='nvim'
 export VISUAL='nvim'
@@ -27,6 +28,10 @@ export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_PREVIEW_IMGPROG='ueberzug'
 export NNN_PLUG='p:preview-tui;o:nuke;'
 
+
+# ----- Commentary -----
+setopt interactivecomments
+
 # ----- History Settings -----
 # Crucial for Autosuggestions functionality
 HISTFILE=~/.zsh_history
@@ -35,10 +40,6 @@ SAVEHIST=10000
 setopt appendhistory sharehistory
 
 # ----- FZF Configuration (GitHub Light Theme) -----
-# Loads the official fzf keybindings and completion
-source /usr/share/doc/fzf/examples/key-bindings.zsh 2>/dev/null
-source /usr/share/doc/fzf/examples/completion.zsh 2>/dev/null
-
 # Custom fzf look to match 'projekt0n/github-nvim-theme' light
 export FZF_DEFAULT_OPTS="
   --color=bg:-1,bg+:#f6f8fa
@@ -48,6 +49,25 @@ export FZF_DEFAULT_OPTS="
   --color=marker:#1a7f37,spinner:#8250df,header:#0969da
   --height 40% --layout=reverse --border
 "
+
+# FZF History Search (Ctrl+R) - fuzzy find through command history
+fzf-history-search() {
+  local selected num
+  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
+  selected=( $(fc -rl 1 | awk '{ cmd=$0; sub(/^[ \t]*[0-9]+\*[?\t ]+/, "", cmd); if (!seen[cmd]++) print $0 }' |
+    FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} ${FZF_DEFAULT_OPTS-} -n2..,.. --scheme=history --bind=ctrl-r:toggle-sort,ctrl-z:ignore ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m" fzf) )
+  local ret=$?
+  if [ -n "$selected" ]; then
+    num=$selected[1]
+    if [ -n "$num" ]; then
+      zle vi-fetch-history -n $num
+    fi
+  fi
+  zle reset-prompt
+  return $ret
+}
+zle -N fzf-history-search
+bindkey '^R' fzf-history-search
 
 # ----- Plugins & Prompt -----
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
@@ -79,6 +99,8 @@ alias grep='grep --color=auto'
 alias nala="sudo nala"
 alias vim="nvim"
 alias vi="nvim"
+alias yt="yt-dlp_linux -f '137+bestaudio[ext=m4a]/136+bestaudio[ext=m4a]/135+bestaudio[ext=m4a]/134+bestaudio[ext=m4a]/133+bestaudio[ext=m4a]/160+bestaudio[ext=m4a]'"
+
 
 # edit root files
 alias snvim='sudo XDG_CONFIG_HOME=$HOME/.config nvim'
@@ -99,7 +121,7 @@ alias gita="git add -A"
 alias gits="git status"
 alias gitl="git log"
 alias gitc="git commit -m"   
-alias gitr="git reset --hard"
+alias gitr="git ressetopt interactivecommentset --hard"
 
 # Zoxide Navigation
 alias cd="z"
@@ -205,3 +227,7 @@ alias gs='git status'
 
 # opencode
 export PATH=/home/sam/.opencode/bin:$PATH
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/sam/.local/bin:$PATH"

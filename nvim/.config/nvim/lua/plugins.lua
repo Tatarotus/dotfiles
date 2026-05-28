@@ -137,26 +137,7 @@ require("lazy").setup({
   -- Productivity
   { 'tpope/vim-commentary' },
   { 'tpope/vim-surround' },
-  { 'Exafunction/codeium.nvim',
-    config = function()
-      require'codeium'.setup {
-        enable = true,
-        virtual_text = {
-          enabled = true,
-          key_bindings = {
-            accept = "<S-Tab>",
-            accept_word = false,
-            accept_line = false,
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-e>",
-          },
-        },
-        completion = { enabled = true, auto_trigger = true },
-      }
-    end
-  },
-  { 'Robitx/gp.nvim', config = true },
+
 
   -- Neorg
   {

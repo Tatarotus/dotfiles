@@ -35,9 +35,6 @@ map('t', '<A-v>', [[<C-\><C-n>]], opts)
 map('n', '<leader>e', vim.diagnostic.open_float, opts)
 -- map("n", "<leader>f", vim.lsp.buf.format, opts)
 
--- GP (AI)
--- map('n', '<C-c>', ':GpRewrite<CR>', opts)
--- map('n', '<leader>gn', ':GpChatNew<CR>', opts)
 
 -- Markdown Preview
 map('n', '<C-p>', ':MarkdownPreviewToggle<CR>', opts)

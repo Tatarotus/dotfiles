@@ -50,7 +50,6 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
-    { name = 'codeium' },
     { name = 'path' },
     { name = 'buffer' },
   }),
@@ -60,7 +59,6 @@ cmp.setup({
       menu = {
         nvim_lsp = "[LSP]",
         vsnip = "[Snippet]",
-        codeium = "[Codeium]",
         buffer = "[Buffer]",
         path = "[Path]",
       },
